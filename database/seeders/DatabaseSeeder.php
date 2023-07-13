@@ -38,33 +38,6 @@ class DatabaseSeeder extends Seeder
                 'yougo_url' => trim($row[7]),
             ]);
         }
-        
-        Equip::create([
-            'name' => 'ブンジロッド',
-            'part' => 'Main',
-            'type' => '片手棍',
-            'status' => 'Ｄ144 隔216 MP+40 INT+15 MND+15<br>
-            命中+40 魔命+40 魔攻+35 魔法ダメージ+248<br>
-            片手棍スキル+242 受け流しスキル+242<br>
-            魔命スキル+255 マジックバーストダメージ+10<br>
-            ケアル回復量+30%<br>',
-            'level' => '119',
-            'jobs' => '白黒赤召青学風',
-            'image_url' => 'https://www.bg-wiki.com/images/1/13/Bunzi%27s_Rod_icon.png',
-            'yougo_url' => 'https://wiki.ffo.jp/html/38208.html',
-        ]);
 
-        Equip::create([
-            'name' => 'アムラピシールド',
-            'part' => 'Sub',
-            'type' => '盾',
-            'status' => '防94 HP+22 MP+58 INT+13 MND+13<br>
-            魔命+38 魔攻+38 盾スキル+107<br>
-            強化魔法の効果時間+10%<br>',
-            'level' => '119',
-            'jobs' => '白黒赤吟召学風',
-            'image_url' => 'https://www.bg-wiki.com/images/b/be/Ammurapi_Shield_icon.png',
-            'yougo_url' => 'https://wiki.ffo.jp/html/35903.html',
-        ]);
     }
 }

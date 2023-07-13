@@ -108,75 +108,75 @@
     <div class="col-12 col-md-6">
       <div class="row">
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Main', 'part' => 'Main'])
+          @include('modals.modal', ['name' => 'Main', 'part' => 'Main', 'equips' => $Main])
           @include('buttons.button', ['title' => 'Main', 'part' => 'Main'])
           <!-- selected: #c9fdd7 -->
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Sub', 'part' => 'Sub'])
+          @include('modals.modal', ['name' => 'Sub', 'part' => 'Sub', 'equips' => $Sub])
           @include('buttons.button', ['title' => 'Sub', 'part' => 'Sub'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Range', 'part' => 'Range'])
+          @include('modals.modal', ['name' => 'Range', 'part' => 'Range', 'equips' => $Range])
           @include('buttons.button', ['title' => 'Range', 'part' => 'Range'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Ammo', 'part' => 'Ammo'])
+          @include('modals.modal', ['name' => 'Ammo', 'part' => 'Ammo', 'equips' => $Ammo])
           @include('buttons.button', ['title' => 'Ammo', 'part' => 'Ammo'])
         </div>
       </div>
 
       <div class="row pt-1">
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Head', 'part' => 'Head'])
+          @include('modals.modal', ['name' => 'Head', 'part' => 'Head', 'equips' => $Head])
           @include('buttons.button', ['title' => 'Head', 'part' => 'Head'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Neck', 'part' => 'Neck'])
+          @include('modals.modal', ['name' => 'Neck', 'part' => 'Neck', 'equips' => $Neck])
           @include('buttons.button', ['title' => 'Neck', 'part' => 'Neck'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Ear1', 'part' => 'Ear1'])
+          @include('modals.modal', ['name' => 'Ear1', 'part' => 'Ear1', 'equips' => $Ear])
           @include('buttons.button', ['title' => 'Ear1', 'part' => 'Ear1'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Ear2', 'part' => 'Ear2'])
+          @include('modals.modal', ['name' => 'Ear2', 'part' => 'Ear2', 'equips' => $Ear])
           @include('buttons.button', ['title' => 'Ear2', 'part' => 'Ear2'])
         </div>
       </div>
       <div class="row pt-1">
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Body', 'part' => 'Body'])
+          @include('modals.modal', ['name' => 'Body', 'part' => 'Body', 'equips' => $Body])
           @include('buttons.button', ['title' => 'Body', 'part' => 'Body'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Hands', 'part' => 'Hands'])
+          @include('modals.modal', ['name' => 'Hands', 'part' => 'Hands', 'equips' => $Hands])
           @include('buttons.button', ['title' => 'Hands', 'part' => 'Hands'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Ring1', 'part' => 'Ring1'])
+          @include('modals.modal', ['name' => 'Ring1', 'part' => 'Ring1', 'equips' => $Ring])
           @include('buttons.button', ['title' => 'Ring1', 'part' => 'Ring1'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Ring2', 'part' => 'Ring2'])
+          @include('modals.modal', ['name' => 'Ring2', 'part' => 'Ring2', 'equips' => $Ring])
           @include('buttons.button', ['title' => 'Ring2', 'part' => 'Ring2'])
         </div>
       </div>
       <div class="row pt-1">
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Back', 'part' => 'Back'])
+          @include('modals.modal', ['name' => 'Back', 'part' => 'Back', 'equips' => $Back])
           @include('buttons.button', ['title' => 'Back', 'part' => 'Back'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Waist', 'part' => 'Waist'])
+          @include('modals.modal', ['name' => 'Waist', 'part' => 'Waist', 'equips' => $Waist])
           @include('buttons.button', ['title' => 'Waist', 'part' => 'Waist'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Legs', 'part' => 'Legs'])
+          @include('modals.modal', ['name' => 'Legs', 'part' => 'Legs', 'equips' => $Legs])
           @include('buttons.button', ['title' => 'Legs', 'part' => 'Legs'])
         </div>
         <div class="col-3 px-1">
-          @include('modals.modal', ['name' => 'Feet', 'part' => 'Feet'])
+          @include('modals.modal', ['name' => 'Feet', 'part' => 'Feet', 'equips' => $Feet])
           @include('buttons.button', ['title' => 'Feet', 'part' => 'Feet'])
         </div>
       </div>

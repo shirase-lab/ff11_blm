@@ -182,5 +182,4 @@
       </div>
     </div>
 </div>
-<script src="{{ mix('js/select_equip.js') }}"></script>
 @endsection

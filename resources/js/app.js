@@ -1,6 +1,5 @@
 require('./bootstrap');
 
-
 $(document).ready(function () {
     function parseStatus(text, status) {
       // 抽出

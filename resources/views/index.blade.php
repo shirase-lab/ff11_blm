@@ -1,27 +1,186 @@
-@extends('layout.common')
-@section('title', 'FF11黒魔マジックバースト')
-@section('keywords', 'A,B,C')
-@section('description', 'FF11 黒魔道士のマジックバーストダメージ計算です')
-@section('pageCss')
-<link href="/css/page.css" rel="stylesheet">
-@endsection
- 
-@include('layout.head')
- 
-@include('layout.header')
-@section('content')
-    <p>{{ $hello }}</p>
-    @foreach ($hello_array as $hello_word)
-        {{ $hello_word }}<br>
-    @endforeach
-@endsection
+@extends('layouts.common')
 
-@section('pageSub')
-    <p>個別サイドバーの内容</p>
+@section('content')
+<div class="mt-5"></div>
+  <div class="row pt-1">
+    <div class="col-md-3 col-12">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg_status" viewBox="0 0 100 400">
+        <rect id="rect_status" x="0" y="0" rx="5" ry="5" width="100" height="210" fill="#4040BB80" style="stroke-width:2;stroke:#000"/>
+        <text id="id_status" x="5%" y="4%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="12" style="stroke-width:1;stroke:#000000FF;fill:#ffffffE0;paint-order:stroke;">
+          Juvenile
+        </text>
+        <text id="id_status" x="5%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#2020FF;paint-order:stroke;">
+          Lv99
+        </text>
+        <text id="id_status" x="28%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#2020FF;paint-order:stroke;">
+          黒魔道士
+        </text>
+        <text id="id_status" x="5%" y="10%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          Lv53
+        </text>
+        <text id="id_status" x="28%" y="10%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          赤魔道士
+        </text>
+        <text id="id_status" x="5%" y="12%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          ILv
+        </text>
+        <text id="id_status" x="28%" y="12%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          119/Su5
+        </text>
+
+        <text id="id_status" x="5%" y="16%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          HP
+        </text>
+        <text id="id_status" x="20%" y="16%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          1594/1594
+        </text>
+        <text id="id_status" x="5%" y="18%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          MP
+        </text>
+        <text id="id_status" x="20%" y="18%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          1292/1292
+        </text>
+        <text id="id_status" x="5%" y="20%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          TP
+        </text>
+        <text id="id_status" x="20%" y="20%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          0
+        </text>
+
+        <text x="5%" y="24%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          STR
+        </text>
+        <text x="40%" y="24%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          109
+        </text>
+        <text id="status_str" x="53%" y="24%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="26%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          DEX
+        </text>
+        <text x="40%" y="26%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          124
+        </text>
+        <text id="status_dex" x="53%" y="26%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="28%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          VIT
+        </text>
+        <text x="40%" y="28%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          111
+        </text>
+        <text id="status_vit" x="53%" y="28%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="30%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          AGI
+        </text>
+        <text x="40%" y="30%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          126
+        </text>
+        <text id="status_agi" x="53%" y="30%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="32%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          INT
+        </text>
+        <text x="40%" y="32%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          138
+        </text>
+        <text id="status_int" x="53%" y="32%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="34%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          MND
+        </text>
+        <text x="40%" y="34%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          117
+        </text>
+        <text id="status_mnd" x="53%" y="34%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        <text x="5%" y="36%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          CHR
+        </text>
+        <text x="40%" y="36%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          121
+        </text>
+        <text id="status_chr" x="53%" y="36%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+      </svg>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="row">
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Main', 'part' => 'Main'])
+          @include('buttons.button', ['title' => 'Main', 'part' => 'Main'])
+          <!-- selected: #c9fdd7 -->
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Sub', 'part' => 'Sub'])
+          @include('buttons.button', ['title' => 'Sub', 'part' => 'Sub'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Range', 'part' => 'Range'])
+          @include('buttons.button', ['title' => 'Range', 'part' => 'Range'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Ammo', 'part' => 'Ammo'])
+          @include('buttons.button', ['title' => 'Ammo', 'part' => 'Ammo'])
+        </div>
+      </div>
+
+      <div class="row pt-1">
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Head', 'part' => 'Head'])
+          @include('buttons.button', ['title' => 'Head', 'part' => 'Head'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Neck', 'part' => 'Neck'])
+          @include('buttons.button', ['title' => 'Neck', 'part' => 'Neck'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Ear1', 'part' => 'Ear1'])
+          @include('buttons.button', ['title' => 'Ear1', 'part' => 'Ear1'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Ear2', 'part' => 'Ear2'])
+          @include('buttons.button', ['title' => 'Ear2', 'part' => 'Ear2'])
+        </div>
+      </div>
+      <div class="row pt-1">
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Body', 'part' => 'Body'])
+          @include('buttons.button', ['title' => 'Body', 'part' => 'Body'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Hands', 'part' => 'Hands'])
+          @include('buttons.button', ['title' => 'Hands', 'part' => 'Hands'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Ring1', 'part' => 'Ring1'])
+          @include('buttons.button', ['title' => 'Ring1', 'part' => 'Ring1'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Ring2', 'part' => 'Ring2'])
+          @include('buttons.button', ['title' => 'Ring2', 'part' => 'Ring2'])
+        </div>
+      </div>
+      <div class="row pt-1">
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Back', 'part' => 'Back'])
+          @include('buttons.button', ['title' => 'Back', 'part' => 'Back'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Waist', 'part' => 'Waist'])
+          @include('buttons.button', ['title' => 'Waist', 'part' => 'Waist'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Legs', 'part' => 'Legs'])
+          @include('buttons.button', ['title' => 'Legs', 'part' => 'Legs'])
+        </div>
+        <div class="col-3 px-1">
+          @include('modals.modal', ['name' => 'Feet', 'part' => 'Feet'])
+          @include('buttons.button', ['title' => 'Feet', 'part' => 'Feet'])
+        </div>
+      </div>
+    </div>
+</div>
+<script src="{{ mix('js/select_equip.js') }}"></script>
 @endsection
- 
-@section('pageJs')
-<script src="/js/page.js"></script>
-@endsection
- 
-@include('layout.footer')

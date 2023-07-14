@@ -149,7 +149,7 @@
         <text x="5%" y="54%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
           MB命中
         </text>
-        <text id="status_m_mb" x="55%" y="54%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        <text id="status_m_mba" x="55%" y="54%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
         </text>
 
       </svg>

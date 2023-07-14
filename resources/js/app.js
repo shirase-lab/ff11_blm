@@ -83,6 +83,7 @@ $(document).ready(function () {
       $("#status_"+part+"_m_eskl").html(parseStatus(text, "精霊魔法スキル"));
       $("#status_"+part+"_m_mb").html(parseStatus(text, "マジックバーストダメージ"));
       $("#status_"+part+"_m_mb2").html(parseStatus(text, "マジックバーストダメージII"));
+      $("#status_"+part+"_m_mba").html(parseStatus(text, "マジックバースト命中"));
 
       var partAugTextId = '#status_' + part + "_aug";
       var augtext =  $(this).find(partAugTextId).html();
@@ -100,6 +101,7 @@ $(document).ready(function () {
       $("#status_"+part+"_aug_m_eskl").html(parseStatus(augtext, "精霊魔法スキル"));
       $("#status_"+part+"_aug_m_mb").html(parseStatus(augtext, "マジックバーストダメージ"));
       $("#status_"+part+"_aug_m_mb2").html(parseStatus(augtext, "マジックバーストダメージII"));
+      $("#status_"+part+"_aug_m_mba").html(parseStatus(augtext, "マジックバースト命中"));
 
         
       updateStatus();

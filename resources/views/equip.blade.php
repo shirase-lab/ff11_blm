@@ -5,7 +5,7 @@
   <div class="row pt-1">
     <div class="col-md-3 col-12">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg_status" viewBox="0 0 100 400">
-        <rect id="rect_status" x="0" y="0" rx="5" ry="5" width="100" height="210" fill="#4040BB80" style="stroke-width:2;stroke:#000"/>
+        <rect id="rect_status" x="0" y="0" rx="5" ry="5" width="100" height="240" fill="#4040BB80" style="stroke-width:2;stroke:#000"/>
         <text id="id_status" x="5%" y="4%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="12" style="stroke-width:1;stroke:#000000FF;fill:#ffffffE0;paint-order:stroke;">
           Juvenile
         </text>
@@ -103,6 +103,55 @@
         </text>
         <text id="status_chr" x="53%" y="36%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
         </text>
+
+        <text x="5%" y="40%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          魔命
+        </text>
+        <text id="status_m_acc" x="55%" y="40%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="42%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          魔攻
+        </text>
+        <text id="status_m_atk" x="55%" y="42%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+        
+        <text x="5%" y="44%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          魔法ダメージ
+        </text>
+        <text id="status_m_dmg" x="55%" y="44%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="46%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          魔命スキル
+        </text>
+        <text id="status_m_askl" x="55%" y="46%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="48%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          精霊魔法スキル
+        </text>
+        <text id="status_m_eskl" x="55%" y="48%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="50%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          MBダメージ
+        </text>
+        <text id="status_m_mb" x="55%" y="50%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="52%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          MBダメージII
+        </text>
+        <text id="status_m_mb2" x="55%" y="52%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
+        <text x="5%" y="54%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">
+          MB命中
+        </text>
+        <text id="status_m_mb" x="55%" y="54%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-size="7" style="stroke-width:1;stroke:#000000A0;fill:#87f079;paint-order:stroke;">
+        </text>
+
       </svg>
     </div>
     <div class="col-12 col-md-6">

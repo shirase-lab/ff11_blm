@@ -20,3 +20,21 @@
 <div style="display: none;" id="status_{{$part}}_m_askl" value="" ></div>
 <div style="display: none;" id="status_{{$part}}_m_eskl" value="" ></div>
 <div style="display: none;" id="status_{{$part}}_m_mb" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_m_mb2" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_m_mba" value="" ></div>
+
+<div style="display: none;" id="status_{{$part}}_aug_str" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_dex" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_vit" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_agi" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_int" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_mnd" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_chr" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_acc" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_atk" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_dmg" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_askl" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_eskl" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_mb" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_mb2" value="" ></div>
+<div style="display: none;" id="status_{{$part}}_aug_m_mba" value="" ></div>

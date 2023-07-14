@@ -13,4 +13,15 @@ use App\Http\Controllers\EquipmentController;
 |
 */
 
-Route::get('/', [EquipmentController::class, 'index']);
+Route::get('/', [EquipmentController::class, 'equip']);
+if (config("app.env") === "local") {
+    Route::prefix('equip')->group(function() {
+        Route::get('/', [EquipmentController::class, 'index'])->name('equip.index');
+        Route::get('/new', [EquipmentController::class, 'create'])->name('equip.create');
+        Route::post('/', [EquipmentController::class, 'store'])->name('equip.store');
+        Route::get('/{id}', [EquipmentController::class, 'show'])->name('equip.show');
+        Route::get('/{id}/edit', [EquipmentController::class, 'edit'])->name('equip.edit');
+        Route::put('/{id}', [EquipmentController::class, 'update'])->name('equip.update');
+    });
+}
+

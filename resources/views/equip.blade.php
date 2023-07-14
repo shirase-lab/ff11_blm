@@ -5,14 +5,14 @@
   <div class="row pt-1">
     <div class="col-md-3 col-12">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg_status" viewBox="0 0 100 400">
-        <rect id="rect_status" x="0" y="0" rx="5" ry="5" width="100" height="240" fill="#4040BB80" style="stroke-width:2;stroke:#000"/>
+        <rect id="rect_status" x="0" y="0" rx="5" ry="5" width="100" height="240" fill="#010856" style="stroke-width:2;stroke:#000"/>
         <text id="id_status" x="5%" y="4%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="12" style="stroke-width:1;stroke:#000000FF;fill:#ffffffE0;paint-order:stroke;">
           Juvenile
         </text>
-        <text id="id_status" x="5%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#2020FF;paint-order:stroke;">
+        <text id="id_status" x="5%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#6060FF;paint-order:stroke;">
           Lv99
         </text>
-        <text id="id_status" x="28%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#2020FF;paint-order:stroke;">
+        <text id="id_status" x="28%" y="8%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#6060FF;paint-order:stroke;">
           黒魔道士
         </text>
         <text id="id_status" x="5%" y="10%" text-anchor="left" dominant-baseline="top" font-family="Noto Sans JP" font-style="italic" font-size="7" style="stroke-width:1;stroke:#000000FF;fill:#FFFFFF;paint-order:stroke;">

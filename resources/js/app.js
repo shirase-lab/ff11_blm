@@ -171,7 +171,7 @@ $(document).ready(function () {
     $('#search_results').empty();
     $.ajax({
         type: 'GET',
-        url: '/equip/?part_id=' + part_id + '&search_name=' + searchValue + '&page=',
+        url: 'equip/?part_id=' + part_id + '&search_name=' + searchValue + '&page=',
         dataType: 'json',
         beforeSend: function () {
             $('.loading').removeClass('display-none');

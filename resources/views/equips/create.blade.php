@@ -31,6 +31,10 @@
         {{Form::textarea('status', $equip->status, ['class' =>"form-control", 'rows' => 4] )}}
       </div>
       <div class="form-group">
+        {{Form::label('hide_status', '隠し及び未対応フォーマットステータス', ['class' => "form-label"])}}
+        {{Form::textarea('hide_status', $equip->status, ['class' =>"form-control", 'rows' => 2] )}}
+      </div>
+      <div class="form-group">
         {{Form::label('a_status', 'オーグメント', ['class' => "form-label"])}}
         {{Form::textarea('a_status', $equip->a_status, ['class' =>"form-control", 'rows' => 4])}}
       </div>

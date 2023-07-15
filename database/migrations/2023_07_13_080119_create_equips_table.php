@@ -21,6 +21,7 @@ class CreateEquipsTable extends Migration
             $table->boolean('rare')->default(false);
             $table->boolean('ex')->default(false);
             $table->string('status');
+            $table->string('hide_status')->default('');
             $table->boolean('aug')->default(false);
             $table->string('a_status')->default('');
             $table->integer('quality')->default(0);

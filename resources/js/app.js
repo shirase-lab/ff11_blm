@@ -1,118 +1,206 @@
 require('./bootstrap');
 
 $(document).ready(function () {
-    function parseStatus(text, status) {
-      // 抽出
-      var ret = 0;
-      var check = status + "(\\+|\\-)(\\d+)";
-      var reg = new RegExp(check, 'gm');
-      var matchArray = text.match(reg);
-      if (!Array.isArray(matchArray)) { return 0; }
-      matchArray.forEach(function(e) {
-        ret += parseInt(e.match(/\d+/g)[0], 10);
-      });
-      console.log(status + ":" + ret);
-      return ret;
-    }
-  
-    function updateStatus()
-    {
-      var statusArray = ["str", "dex", "vit", "agi", "int", "mnd", "chr", "m_acc", "m_atk", "m_dmg", "m_askl", "m_eskl", "m_mb", "m_mb2", "m_mba"];
-      var partArray = ["Main", "Sub", "Range", "Ammo", "Head", "Neck" , "Ear1", "Ear2", "Body", "Hands", "Ring1", "Ring2", "Back", "Waist", "Legs", "Feet"];
-      var statuses = [];
-      var i = 0;
-      statusArray.forEach(function(s) {
-        statuses.push(0);
-        partArray.forEach(function(p) {
-          let status = parseInt($("#status_"+p+"_"+s).html());
-          if (!isNaN(status)) {
-            statuses[i] += status;
-          }
-          let augstatus = parseInt($("#status_"+p+"_aug_"+s).html());
-          if (!isNaN(augstatus)) {
-            statuses[i] += augstatus;
-          }
-        })
-        console.log(statusArray[i] + ":" + statuses[i]);
-        if (statuses[i] > 0) { $("#status_"+s).html("+"+statuses[i]); }
-        else if (statuses[i] == 0) { $("#status_"+s).html(""); }
-        else { $("#status_"+s).html("-"+statuses[i]); }
-        i++;
-      });
-    }
-  
-    $(".card-equip").click(function (elem) {
-      console.log($(this).attr('id'));
-      var img_url = $(this).find('image').attr('xlink:href');
-      console.log(img_url);
-      var name = $(this).find('.card-title').html();
-      var rp = name.substr(name.indexOf('['));
-      if (name.indexOf('[') == -1) { rp = ""; }
-      else { name = name.substr(0, name.indexOf('[')); }
-      var part = $(this).attr('part');
-      var partId = "#id_" + part;
-      var partRectId = "#rect_" + part;
-      var partImageId = '#image_' + part;
-      var partNameId = '#name_' + part;
-      var partRpId = '#rp_' + part;
-      console.log(partImageId);
-      $('body').removeClass('modal-open');
-      $('.modal-backdrop').remove();
-      $('.modal').hide();
-      $(partId).attr('style', "stroke-width:2;stroke:#00000080;fill:#ffffff80;paint-order:stroke;");
-      $(partImageId).attr('xlink:href', img_url);
-      $(partNameId).html(name);
-      $(partRectId).attr('fill', "#c9fdd7");
-      $(partRpId).html(rp);
-  
-      var partTextId = '#status_' + part;
-  
-      var text =  $(this).find(partTextId).html();
-      console.log(text);
-      $("#status_"+part+"_str").html(parseStatus(text, "STR"));
-      $("#status_"+part+"_dex").html(parseStatus(text, "DEX"));
-      $("#status_"+part+"_vit").html(parseStatus(text, "VIT"));
-      $("#status_"+part+"_agi").html(parseStatus(text, "AGI"));
-      $("#status_"+part+"_int").html(parseStatus(text, "INT"));
-      $("#status_"+part+"_mnd").html(parseStatus(text, "MND"));
-      $("#status_"+part+"_chr").html(parseStatus(text, "CHR"));
-      $("#status_"+part+"_m_acc").html(parseStatus(text, "魔命"));
-      $("#status_"+part+"_m_atk").html(parseStatus(text, "魔攻"));
-      $("#status_"+part+"_m_dmg").html(parseStatus(text, "魔法ダメージ"));
-      $("#status_"+part+"_m_askl").html(parseStatus(text, "魔命スキル"));
-      $("#status_"+part+"_m_eskl").html(parseStatus(text, "精霊魔法スキル"));
-      $("#status_"+part+"_m_mb").html(parseStatus(text, "マジックバーストダメージ"));
-      $("#status_"+part+"_m_mb2").html(parseStatus(text, "マジックバーストダメージII"));
-      $("#status_"+part+"_m_mba").html(parseStatus(text, "マジックバースト命中"));
-
-      var partAugTextId = '#status_' + part + "_aug";
-      var augtext =  $(this).find(partAugTextId).html();
-      $("#status_"+part+"_aug_str").html(parseStatus(augtext, "STR"));
-      $("#status_"+part+"_aug_dex").html(parseStatus(augtext, "DEX"));
-      $("#status_"+part+"_aug_vit").html(parseStatus(augtext, "VIT"));
-      $("#status_"+part+"_aug_agi").html(parseStatus(augtext, "AGI"));
-      $("#status_"+part+"_aug_int").html(parseStatus(augtext, "INT"));
-      $("#status_"+part+"_aug_mnd").html(parseStatus(augtext, "MND"));
-      $("#status_"+part+"_aug_chr").html(parseStatus(augtext, "CHR"));
-      $("#status_"+part+"_aug_m_acc").html(parseStatus(augtext, "魔命"));
-      $("#status_"+part+"_aug_m_atk").html(parseStatus(augtext, "魔攻"));
-      $("#status_"+part+"_aug_m_dmg").html(parseStatus(augtext, "魔法ダメージ"));
-      $("#status_"+part+"_aug_m_askl").html(parseStatus(augtext, "魔命スキル"));
-      $("#status_"+part+"_aug_m_eskl").html(parseStatus(augtext, "精霊魔法スキル"));
-      $("#status_"+part+"_aug_m_mb").html(parseStatus(augtext, "マジックバーストダメージ"));
-      $("#status_"+part+"_aug_m_mb2").html(parseStatus(augtext, "マジックバーストダメージII"));
-      $("#status_"+part+"_aug_m_mba").html(parseStatus(augtext, "マジックバースト命中"));
-
-        
-      updateStatus();
-  /*    
-      console.log(text.match(/魔命(\+|\-)(\d+)/gm));
-      console.log(text.match(/魔攻(\+|\-)(\d+)/gm));
-      console.log(text.match(/魔命スキル(\+|\-)(\d+)/gm));
-      console.log(text.match(/マジックバーストダメージ(\+|\-)(\d+)/gm));
-  */
-  
+  var currentEquipPart = null;
+  function parseStatus(text, status) {
+    // 抽出
+    var ret = 0;
+    var check = status + "(\\+\\d+|\\-\\d+)";
+    var reg = new RegExp(check, 'gm');
+    var matchArray = text.match(reg);
+    if (!Array.isArray(matchArray)) { return 0; }
+    matchArray.forEach(function(e) {
+      ret += parseInt(e.match(/\-*\d+/g)[0], 10);
     });
+//    console.log(status + ":" + ret);
+    return ret;
+  }
   
+  function updateStatus() {
+
+    var status = new Object();
+    var statuses = ["HP", "MP", "STR", "DEX", "VIT", "AGI", "INT", "MND", "CHR", "魔命", "魔攻", "魔法ダメージ", "魔命スキル", "精霊魔法スキル", "マジックバーストダメージ", "マジックバーストダメージII", "マジックバースト命中"];
+    var statusArray = ["hp", "mp", "str", "dex", "vit", "agi", "int", "mnd", "chr", "m_acc", "m_atk", "m_dmg", "m_askl", "m_eskl", "m_mb", "m_mb2", "m_mba"];
+    $('.equiped_status').each(function (i, element) {
+      $.each(statuses, function(index, value) {
+        if (isNaN(status[statusArray[index]])) { status[statusArray[index]] = 0; }
+        status[statusArray[index]] += parseStatus($(element).html(), value);
+      })
+    })
+    $('.equiped_aug_status').each(function (i, element) {
+      $.each(statuses, function(index, value) {
+        status[statusArray[index]] += parseStatus($(element).html(), value);
+      })
+    })
+    $('.equiped_hide_status').each(function (i, element) {
+      $.each(statuses, function(index, value) {
+        status[statusArray[index]] += parseStatus($(element).html(), value);
+      })
+    })
+
+    $.each(status, function(key, value) {
+      console.log(key + ":" + value);
+    });
+    console.log("status:" + status);
+    $.each(statusArray, function(index, value) {
+      $("#status_" + value).html(status[value]);
+    })
+    var statuses = [];
+    var i = 0;
+    $.each(statusArray, function(index, s) {
+      if (s == 'hp') {
+        let point = (1594+status[statusArray[index]]);
+        $("#status_"+s).html("1594/" + point);
+      } else if (s == 'mp') {
+        let point = (1292+status[statusArray[index]]);
+        $("#status_"+s).html("1292/" + point);
+      } else {
+        if (status[statusArray[index]] > 0) { $("#status_"+s).html("+"+status[statusArray[index]]); }
+        else if (status[statusArray[index]] == 0) { $("#status_"+s).html(""); }
+        else { $("#status_"+s).html("-"+status[statusArray[index]]); }
+      }
+      i++;
+    });
+
+    $('#M_int_sum').html(getStatus($('#status_base_int')) + getStatus($('#status_int')));
+    $('#M_m_atk').html(getStatus($('#status_base_matk')) + getStatus($('#status_m_atk')));
+    $('#M_dmg').html(getStatus($('#status_m_dmg')));
+
+    $('#M_coefficient').html(calcIntMethod());
+  }
+
+  function getStatus(elem)
+  {
+    return parseInt($(elem).html().trim(), 10) || 0;
+  }
+
+  function calcIntMethod()
+  {
+    let player_int = getStatus($('#M_int_sum'));
+    let enemy_int = getStatus($('#enemy_int'));
+    var int_diff = Math.abs(player_int - enemy_int);
+    let bMinus = (player_int - enemy_int ) < 0 ? true : false;
+    let coefficients = new Map([
+      ['500', ['1.00', 400]],
+      ['400', ['1.97', 300]],
+      ['300', ['2.97', 200]],
+      ['200', ['3.85', 100]],
+      ['100', ['4.24', 50]],
+      ['50', ['4.80', 0]],
+    ]);
+    var ret = 0;
+    // 上限値の計算とマイナス時の計算をする必要がある。
+    console.log("int diff:" + int_diff);
+    for (let [key, value] of coefficients) {
+      console.log("key:" + key + ", value:" + value);
+      var c = calcCoefficients(int_diff, parseInt(key, 10), parseFloat(value[0], 10), value[1]);
+      ret += c[0];
+      int_diff = c[1];
+    }
+    if (bMinus) { ret *= -1; }
+    console.log("calcIntMethod() : ret = " + ret );
+    return ret;
+  }
+
+  function calcCoefficients( int_diff, threshold ,coefficient, min_threashold )
+  {
+    console.log("calcCoefficients(int diff:" + int_diff + ", threshold:" + threshold + ", coefficient:" + coefficient + ", min_threashold:" + min_threashold);
+    if (min_threashold <= int_diff && int_diff <= threshold) {
+      var ret = (int_diff - min_threashold) * coefficient;
+      int_diff -= (int_diff - min_threashold);
+      return [ret, int_diff];
+    }
+    return [0, int_diff];
+
+  }
+  
+
+  function cardEquip() {
+    console.log("card-equip.onclick");
+
+    var image_url = $(this).find('image').attr('xlink:href');
+    var name = $(this).find('.card-title').html();
+
+    var rp = name.substr(name.indexOf('['));
+    if (name.indexOf('[') == -1) { rp = ""; }
+    else { name = name.substr(0, name.indexOf('[')); }
+    currentEquipPart.find('.equip_square').attr('style', "stroke-width:2;stroke:#00000080;fill:#ffffff80;paint-order:stroke;");
+    currentEquipPart.find('.equip_square').attr('fill', "#c9fdd7");
+    currentEquipPart.find('.equip_image').attr('xlink:href', image_url);
+    currentEquipPart.find('.equip_name').html(name);
+    currentEquipPart.find('.equip_rp').html(rp);
+    currentEquipPart.find('.equiped_status').html($(this).find('.t_equip_status'));
+    currentEquipPart.find('.equiped_aug_status').html($(this).find('.t_equip_aug_status'));
+    currentEquipPart.find('.equiped_hide_status').html($(this).find('.t_equip_hide_status'));
+
+
+    updateStatus();
+
+  }
+
+  function clearSelect() {
+    $('.equip_button').each(function () {
+      $(this).find('.rect_select').attr('style', 'display:none;');
+    });
+  }
+
+  function selectEquip(elem)
+  {
+    currentEquipPart = $(elem);
+    elem.find('.rect_select').attr('style', 'stroke-width:2;stroke:#C44;display:block;');
+  }
+
+  $('.equip_button').on('click', function() {
+    console.log("$('.equip_button').on('click');");
+    clearSelect();
+    selectEquip($(this));
+    $('#part_id').attr('part_id', $(this).attr('part_id'));
+    let part_id = $('#part_id').attr('part_id');
+    search(part_id, '');
   });
+
+  /* 検索 */
+  $('.user-search-form .search-icon').on('click', function () {
+    let part_id = $('#part_id').attr('part_id');
+    let searchValue = $('#search_value').val() || '';
+    search(part_id, searchValue);
+  });
+
+  function search(part_id, searchValue) {
+    if (!part_id) { return false; }
+    $('#search_results').empty();
+    $.ajax({
+        type: 'GET',
+        url: '/equip/?part_id=' + part_id + '&search_name=' + searchValue + '&page=',
+        dataType: 'json',
+        beforeSend: function () {
+            $('.loading').removeClass('display-none');
+        }
+    }).done(function (data) { //ajaxが成功したときの処理
+      $('.loading').addClass('display-none'); //通信中のぐるぐるを消す
+      const template = $('#equip_list_template').html();
+      console.log(data);
+      $.each(data, function (index, value) {
+        var clone = $(template);
+        console.log(value.status);
+        clone.find('.card-equip').attr('id', value.id);
+        clone.find('.card-equip').attr('part_id', value.part_id);
+        clone.find('.card-equip').click(cardEquip);
+        clone.find('.t_equip_name').html(value.name);
+        clone.find('.t_equip_status').html((value.status).replace(/\r?\n/g, '<br>'));
+        clone.find('.t_equip_hide_status').html((value.hide_status).replace(/\r?\n/g, '<br>'));
+        clone.find('.t_equip_aug_status').html((value.a_status).replace(/\r?\n/g, '<br>'));
+        clone.find('.t_equip_level').html(value.level);
+        clone.find('.t_equip_jobs').html(value.jobs);
+        clone.find('.t_eq_svgImage').attr('xlink:href', value.image_url);
+        $('#search_results').append(clone);
+      });
+
+    }).fail(function (error) {
+        console.log(error);
+    })
+
+  }
+
+});
   

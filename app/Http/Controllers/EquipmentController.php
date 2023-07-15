@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equip;
+use App\Models\EquipPart;
 use App\Models\Part;
 use App\Models\Type;
 
@@ -11,42 +12,18 @@ class EquipmentController extends Controller
 {
     public function equip()
     {
-        $Main = Equip::whereHas('part', function($query) { $query->where('name', 'Main'); } )->get();
-        $Sub = Equip::whereHas('part', function($query) { $query->where('name', 'Sub'); } )->get();
-        $Range = Equip::whereHas('part', function($query) { $query->where('name', 'Range'); } )->get();
-        $Ammo = Equip::whereHas('part', function($query) { $query->where('name', 'Ammo'); } )->get();
-        $Head = Equip::whereHas('part', function($query) { $query->where('name', 'Head'); } )->get();
-        $Neck = Equip::whereHas('part', function($query) { $query->where('name', 'Neck'); } )->get();
-        $Ear = Equip::whereHas('part', function($query) { $query->where('name', 'Ear'); } )->get();
-        $Body = Equip::whereHas('part', function($query) { $query->where('name', 'Body'); } )->get();
-        $Hands = Equip::whereHas('part', function($query) { $query->where('name', 'Hands'); } )->get();
-        $Ring = Equip::whereHas('part', function($query) { $query->where('name', 'Ring'); } )->get();
-        $Back = Equip::whereHas('part', function($query) { $query->where('name', 'Back'); } )->get();
-        $Waist = Equip::whereHas('part', function($query) { $query->where('name', 'Waist'); } )->get();
-        $Legs = Equip::whereHas('part', function($query) { $query->where('name', 'Legs'); } )->get();
-        $Feet = Equip::whereHas('part', function($query) { $query->where('name', 'Feet'); } )->get();
-        return view('equip', compact('Main','Sub','Range','Ammo','Head','Neck','Ear','Body',
-            'Hands','Ring','Back','Waist','Legs','Feet'));
+        $eqparts = EquipPart::all();
+        $results = [];
+
+        return view('equip', compact('eqparts', "results"));
     }
     //
-    public function index()
+    public function index(Request $request)
     {
-        $Main = Equip::whereHas('part', function($query) { $query->where('name', 'Main'); } )->get();
-        $Sub = Equip::whereHas('part', function($query) { $query->where('name', 'Sub'); } )->get();
-        $Range = Equip::whereHas('part', function($query) { $query->where('name', 'Range'); } )->get();
-        $Ammo = Equip::whereHas('part', function($query) { $query->where('name', 'Ammo'); } )->get();
-        $Head = Equip::whereHas('part', function($query) { $query->where('name', 'Head'); } )->get();
-        $Neck = Equip::whereHas('part', function($query) { $query->where('name', 'Neck'); } )->get();
-        $Ear = Equip::whereHas('part', function($query) { $query->where('name', 'Ear'); } )->get();
-        $Body = Equip::whereHas('part', function($query) { $query->where('name', 'Body'); } )->get();
-        $Hands = Equip::whereHas('part', function($query) { $query->where('name', 'Hands'); } )->get();
-        $Ring = Equip::whereHas('part', function($query) { $query->where('name', 'Ring'); } )->get();
-        $Back = Equip::whereHas('part', function($query) { $query->where('name', 'Back'); } )->get();
-        $Waist = Equip::whereHas('part', function($query) { $query->where('name', 'Waist'); } )->get();
-        $Legs = Equip::whereHas('part', function($query) { $query->where('name', 'Legs'); } )->get();
-        $Feet = Equip::whereHas('part', function($query) { $query->where('name', 'Feet'); } )->get();
-        return view('equips/index', compact('Main','Sub','Range','Ammo','Head','Neck','Ear','Body',
-            'Hands','Ring','Back','Waist','Legs','Feet'));
+        $results = [];
+        $results = Equip::where('part_id', $request->part_id)->get();
+        
+        return response()->json($results);
     }
 
     public function create()

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Part;
 use App\Models\Type;
 use App\Models\Equip;
+use App\Models\EquipPart;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,9 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $parts = ['Main', 'Sub', 'Range', 'Ammo', 'Head', 'Neck', 'Ear', 'Body', 'Hands', 'Ring', 'Back', 'Waist', 'Legs', 'Feet'];
-        foreach ($parts as $part) {
-            Part::create(['name' => $part]);
+        $parts = ['Main'=>1, 'Sub'=>2, 'Range'=>3, 'Ammo'=>4, 'Head'=>5, 'Neck'=>6, 'Ear'=>7, 'Body'=>8, 'Hands'=>9, 'Ring'=>10, 'Back'=>11, 'Waist'=>12, 'Legs'=>13, 'Feet'=>14];
+        foreach ($parts as $key => $value) {
+            Part::create(['name' => $key, 'id' => $value]);
+        }
+        $eqparts = ['Main'=>1, 'Sub'=>2, 'Range'=>3, 'Ammo'=>4, 'Head'=>5, 'Neck'=>6, 'Ear1'=>7, 'Ear2'=>7, 'Body'=>8, 'Hands'=>9, 'Ring1'=>10, 'Ring2'=>10, 'Back'=>11, 'Waist'=>12, 'Legs'=>13, 'Feet'=>14];
+        foreach ($eqparts as $key => $value) {
+            EquipPart::create(['name' => $key, 'part_id' => $value]);
         }
         $types = ['格闘武器','短剣','片手剣','両手剣','片手斧','両手斧','両手槍','両手鎌','片手刀','両手刀','片手棍','両手棍','盾','グリップ',
         '投てき','弓術','射撃','釣り竿','矢','ボルト','銃弾','投てき(アクセサリ型)','投てき(消費型)','汁', 'ペットフード','餌',

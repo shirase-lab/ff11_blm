@@ -488,6 +488,7 @@
         "rare": 0,
         "level": 99,
         "status": "INT+6 MND+6 CHR+6 60HPをMPに変換\r\nユニティランク:魔命+5",
+        "hide_status": "HP-60 MP+60",
         "part_id": 10,
         "quality": 0,
         "type_id": 33,

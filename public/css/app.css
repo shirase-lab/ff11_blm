@@ -11980,15 +11980,20 @@ textarea.form-control-lg {
   }
 }
 .equip-font {
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   color: #FFF;
   text-shadow: 1px 1px 0 #404040, -1px -1px 0 #404040, -1px 1px 0 #404040, 1px -1px 0 #404040, 0px 1px 0 #404040, -1px 0 #404040, -1px 0 0 #404040, 1px 0 0 #404040;
 }
 
 .equip-augment {
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   color: #FFFF00;
   text-shadow: 1px 1px 0 #404040, -1px -1px 0 #404040, -1px 1px 0 #404040, 1px -1px 0 #404040, 0px 1px 0 #404040, -1px 0 #404040, -1px 0 0 #404040, 1px 0 0 #404040;
+}
+
+.equip-list {
+  overflow-y: auto;
+  height: 95vh;
 }
 
 .bg-color {

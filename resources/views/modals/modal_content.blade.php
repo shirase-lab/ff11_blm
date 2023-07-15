@@ -14,6 +14,9 @@
           <p id="status_{{$part}}" class="card-text equip-font">
             {!! nl2br($data->status) !!}
           </p>
+          <div id="hide_status_{{$part}}" class="d-none">
+            {!! nl2br($data->hide_status) !!}
+          </div>
           <p id="status_{{$part}}_aug" class="card-text equip-augment">
             @if ($data->aug)
             ----------Augment----------<br>

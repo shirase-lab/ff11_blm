@@ -22,7 +22,7 @@ class EquipmentController extends Controller
     {
         $results = [];
         $results = Equip::where('part_id', $request->part_id)->get();
-        
+
         return response()->json($results);
     }
 

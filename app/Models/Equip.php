@@ -17,4 +17,9 @@ class Equip extends Model
     {
         return $this->belongsTo(Type::class);
     }
+    public function augments()
+    {
+        return $this->hasMany(Augment::class);
+    }
+
 }

@@ -38,10 +38,10 @@ $(document).ready(function () {
       })
     })
 
-    $.each(status, function(key, value) {
-      console.log(key + ":" + value);
-    });
-    console.log("status:" + status);
+//    $.each(status, function(key, value) {
+//      console.log(key + ":" + value);
+//    });
+//    console.log("status:" + status);
     $.each(statusArray, function(index, value) {
       $("#status_" + value).html(status[value]);
     })
@@ -65,8 +65,54 @@ $(document).ready(function () {
     $('#M_int_sum').html(getStatus($('#status_base_int')) + getStatus($('#status_int')));
     $('#M_m_atk').html(getStatus($('#status_base_matk')) + getStatus($('#status_m_atk')));
     $('#M_dmg').html(getStatus($('#status_m_dmg')));
-
     $('#M_coefficient').html(calcIntMethod());
+  }
+
+  function calcMagicBurst() {
+    let dValue = getStatus($('#M_Dvalue'));
+    let mDmg = getStatus($('#M_dmg'));
+    let mCoe = getStatus($('#M_coefficient'));
+    let synergy = getStatusF($('#M_synergy'));
+    let eStaff = getStatusF($('#M_staff'));
+    let affinity = getStatusF($('#M_affinity'));
+    let mbBonus = getStatusF($('#M_mb_bonus'));
+    let mbBonusEq = getStatusF($('#M_mb_bonus_eq'));
+    let effect = getStatusF($('#M_effect'));
+    let resist = getStatusF($('#M_resist'));
+    let gambit = getStatusF($('#M_gambit'));
+    let mAtack = getStatusF($('#M_m_atk'));
+    let mbarrier = getStatus($('#enemy_mbarrier'));
+    let mCut = getStatus($('#enemy_mcut'));
+    let mbDamage = Math.floor(
+      Math.floor(
+        Math.floor(
+          Math.floor(
+            Math.floor(
+              Math.floor(
+                Math.floor(
+                  Math.floor(
+                    Math.floor(
+                      Math.floor(
+                        Math.floor(dValue + mDmg + mCoe) *
+                      synergy) *
+                    eStaff) *
+                  affinity) *
+                mbBonus) *
+              mbBonusEq) *
+            effect) *
+          resist) *
+        gambit) *
+      (mAtack/mbarrier)) *
+    mCut);
+
+    console.log("mbDamage:" + mbDamage);
+    $("#mb_damage").html(mbDamage);
+    return mbDamage;
+  }
+
+  function getStatusF(elem)
+  {
+    return parseFloat($(elem).html().trim()) || 1.0;
   }
 
   function getStatus(elem)
@@ -90,9 +136,9 @@ $(document).ready(function () {
     ]);
     var ret = 0;
     // 上限値の計算とマイナス時の計算をする必要がある。
-    console.log("int diff:" + int_diff);
+//    console.log("int diff:" + int_diff);
     for (let [key, value] of coefficients) {
-      console.log("key:" + key + ", value:" + value);
+//      console.log("key:" + key + ", value:" + value);
       var c = calcCoefficients(int_diff, parseInt(key, 10), parseFloat(value[0], 10), value[1]);
       ret += c[0];
       int_diff = c[1];
@@ -129,12 +175,12 @@ $(document).ready(function () {
     currentEquipPart.find('.equip_image').attr('xlink:href', image_url);
     currentEquipPart.find('.equip_name').html(name);
     currentEquipPart.find('.equip_rp').html(rp);
-    currentEquipPart.find('.equiped_status').html($(this).find('.t_equip_status'));
-    currentEquipPart.find('.equiped_aug_status').html($(this).find('.t_equip_aug_status'));
-    currentEquipPart.find('.equiped_hide_status').html($(this).find('.t_equip_hide_status'));
-
+    currentEquipPart.find('.equiped_status').html($(this).find('.t_equip_status').html());
+    currentEquipPart.find('.equiped_aug_status').html($(this).find('.t_equip_aug_status').html());
+    currentEquipPart.find('.equiped_hide_status').html($(this).find('.t_equip_hide_status').html());
 
     updateStatus();
+    calcMagicBurst();
 
   }
 
@@ -162,16 +208,17 @@ $(document).ready(function () {
   /* 検索 */
   $('.user-search-form .search-icon').on('click', function () {
     let part_id = $('#part_id').attr('part_id');
-    let searchValue = $('#search_value').val() || '';
-    search(part_id, searchValue);
+    let keyword = $('#keyword').val() || '';
+    console.log("keyword:" + keyword);
+    search(part_id, keyword);
   });
 
-  function search(part_id, searchValue) {
+  function search(part_id, keyword) {
     if (!part_id) { return false; }
     $('#search_results').empty();
     $.ajax({
         type: 'GET',
-        url: 'equip/?part_id=' + part_id + '&search_name=' + searchValue + '&page=',
+        url: 'equip/?part_id=' + part_id + '&keyword=' + keyword + '&page=',
         dataType: 'json',
         beforeSend: function () {
             $('.loading').removeClass('display-none');
@@ -179,21 +226,37 @@ $(document).ready(function () {
     }).done(function (data) { //ajaxが成功したときの処理
       $('.loading').addClass('display-none'); //通信中のぐるぐるを消す
       const template = $('#equip_list_template').html();
-      console.log(data);
+//      console.log(data);
       $.each(data, function (index, value) {
+//        console.log(value.status);
         var clone = $(template);
-        console.log(value.status);
         clone.find('.card-equip').attr('id', value.id);
         clone.find('.card-equip').attr('part_id', value.part_id);
         clone.find('.card-equip').click(cardEquip);
         clone.find('.t_equip_name').html(value.name);
         clone.find('.t_equip_status').html((value.status).replace(/\r?\n/g, '<br>'));
         clone.find('.t_equip_hide_status').html((value.hide_status).replace(/\r?\n/g, '<br>'));
-        clone.find('.t_equip_aug_status').html((value.a_status).replace(/\r?\n/g, '<br>'));
         clone.find('.t_equip_level').html(value.level);
         clone.find('.t_equip_jobs').html(value.jobs);
+        clone.find('.t_augment').attr('style', 'display:none');
         clone.find('.t_eq_svgImage').attr('xlink:href', value.image_url);
         $('#search_results').append(clone);
+        $.each(value.augments, function(i, v) {
+          var clone = $(template);
+          clone.find('.card-equip').attr('id', value.id);
+          clone.find('.card-equip').attr('part_id', value.part_id);
+          clone.find('.card-equip').click(cardEquip);
+          clone.find('.t_equip_name').html(value.name);
+          clone.find('.t_equip_status').html((value.status).replace(/\r?\n/g, '<br>'));
+          clone.find('.t_equip_hide_status').html((value.hide_status).replace(/\r?\n/g, '<br>'));
+          clone.find('.t_equip_aug_status').html((v.status).replace(/\r?\n/g, '<br>'));
+          clone.find('.t_equip_level').html(value.level);
+          clone.find('.t_equip_jobs').html(value.jobs);
+          clone.find('.t_augment_type').html(v.type);
+          clone.find('.t_augment_rank').html(v.rank);
+          clone.find('.t_eq_svgImage').attr('xlink:href', value.image_url);
+          $('#search_results').append(clone);
+        });
       });
 
     }).fail(function (error) {

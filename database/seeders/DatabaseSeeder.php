@@ -7,6 +7,7 @@ use App\Models\Part;
 use App\Models\Type;
 use App\Models\Equip;
 use App\Models\EquipPart;
+use App\Models\Augment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,6 +37,12 @@ class DatabaseSeeder extends Seeder
         $equips = json_decode($json, true);
         foreach ($equips as $equip) {
             Equip::create($equip);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/augment.json');
+        $equips = json_decode($json, true);
+        foreach ($equips as $equip) {
+            Augment::create($equip);
         }
 
     }

@@ -16,7 +16,8 @@
             <div class="card-text equip-font t_equip_status"></div>
             <div class="d-none t_equip_hide_status"></div>
             <div class="card-text equip-augment t_equip_aug_status"></div>
-            <div class="card-text equip-font"><span class="t_equip_level"></span>～&nbsp<span class="t_equip_jobs"></span></div>
+            <div class="card-text equip-font">Lv<span class="t_equip_level"></span>～&nbsp<span class="t_equip_jobs"></span></div>
+            <div class="card-text equip-font text-end t_augment">&lt;Type:<span class="t_augment_type"></span>/Rank:<span class="t_augment_rank"></span>&gt;</div>
           </div>
         </div>
       </div>

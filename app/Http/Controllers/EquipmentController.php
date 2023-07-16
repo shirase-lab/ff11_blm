@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Augment;
 use App\Models\Equip;
 use App\Models\EquipPart;
 use App\Models\Part;
 use App\Models\Type;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class EquipmentController extends Controller
 {
@@ -17,15 +20,25 @@ class EquipmentController extends Controller
 
         return view('equip', compact('eqparts', "results"));
     }
+
     //
     public function index(Request $request)
     {
         $results = [];
-        $results = Equip::where('part_id', $request->part_id)->get();
-
-        return response()->json($results);
+        $results = Equip::with('augments')->where('part_id', $request->part_id)->where(function($query) use ($request) {
+            $search = $request->keyword;
+            Log::info("keyword:{$search}");
+            if (Str::length($search) <= 0) { return; }
+            $query->Where('name', 'like', "%{$search}%");
+//            $query->orWhere('status', 'like', "%{$search}%");
+//            $query->orWhere('hide_status', 'like', "%{$search}%");
+//            $query->orWhere('a_status', 'like', "%{$search}%");
+        })
+        ;
+//        Log::info("results:{$results->get()->toJson()}");
+        return response()->json($results->get());
     }
-
+    
     public function create()
     {
         $equip = new Equip;
@@ -46,10 +59,6 @@ class EquipmentController extends Controller
         if (isset($request->ex) && $request->ex == "on") { $equip->ex = true; }
         if (isset($equip->rare) && $request->rare == "on") { $equip->rare = true; }
         $equip->status = $request->status;
-        if (!empty(trim($request->a_status))) {
-            $equip->a_status = $request->a_status;
-            $equip->aug = true;
-        }
         $equip->level = $request->level;
         $equip->jobs = $request->jobs;
         $equip->image_url = $request->image_url;

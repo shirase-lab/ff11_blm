@@ -1,40 +1,45 @@
 @extends('layouts.common')
 
 @section('content')
-<div class="mt-5"></div>
-  <div class="row pt-1">
-    <div class="col-md-3 col-12">
-      @include('statuswindow')
+<div class="row">
+  <div class="col-12">
+    JuvenileのファイアVが発動。<br>
+    →マジックバースト！Triboulexに、<span id="mb_damage"></span>ダメージ。
+  </div>
+</div>
+<div class="row pt-1">
+  <div class="col-md-2 col-12">
+    @include('statuswindow')
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="row">
+      @foreach ($eqparts as $key => $data)
+        <div class="col-3 px-1">
+          @include('buttons.button', ['title' => $data->name, 'part' => $data->name, 'part_id' => $data->part_id])
+        </div>
+      @endforeach
     </div>
-    <div class="col-12 col-md-5">
-      <div class="row">
-        @foreach ($eqparts as $key => $data)
-          <div class="col-3 px-1">
-            @include('buttons.button', ['title' => $data->name, 'part' => $data->name, 'part_id' => $data->part_id])
+  </div>
+  <div class="col-md-5">
+    <div class="row">
+      <div class="search-wrapper">
+        <div id="part_id" part_id="1"></div>
+        <div class="user-search-form d-flex">
+          <div class="col-8">
+            {{ Form::text('keyword', null, ['id' => 'keyword', 'class' => 'form-control shadow ', 'placeholder' => 'ブンジロッド']) }}
+            <span class="searchclear glyphicon glyphicon-remove-circle"></span>
           </div>
-        @endforeach
-      </div>
-    </div>
-    <div class="col-md-4 equip-list">
-      <div class="row">
-        <div class="search-wrapper">
-          <div id="part_id" part_id="1"></div>
-          <div class="user-search-form d-flex">
-            <div class="col-8">
-              {{ Form::text('search_value', null, ['id' => 'search_name', 'class' => 'form-control shadow', 'placeholder' => 'ブンジロッド']) }}
-            </div>
-            <div class="col-4">
-              {{ Form::button('<i class="fa fa-search" aria-hidden="true"></i>', ['class' => 'btn search-icon', 'type' => 'button']) }}
-            </div>
+          <div class="col-4">
+            {{ Form::button('<i class="fa fa-search" aria-hidden="true"></i>', ['class' => 'btn search-icon', 'type' => 'button']) }}
           </div>
         </div>
       </div>
-      @include('templates.search_result')
-      <div class="row" id="search_results">
-        @foreach ($results as $key => $data)
-          @include('modals.modal_content', ['name' => "Main", 'part' => "Main", 'data' => $data ] )
-        @endforeach
-      </div>
+    </div>
+    @include('templates.search_result')
+    <div class="row equip-list" id="search_results">
+      @foreach ($results as $key => $data)
+        @include('modals.modal_content', ['name' => "Main", 'part' => "Main", 'data' => $data ] )
+      @endforeach
     </div>
   </div>
   <div class="row pt-1">
@@ -55,28 +60,28 @@
         <div class="col-4">INT関数</div><div id="M_coefficient" class="col-8"></div>
       </div>
       <div class="row">
-        <div class="col-4">相乗効果</div><div id="M_synergy" class="col-8"></div>
+        <div class="col-4">相乗効果</div><div id="M_synergy" class="col-8">1.05</div>
       </div>
       <div class="row">
-        <div class="col-4">属性杖</div><div id="M_staff" class="col-8"></div>
+        <div class="col-4">属性杖</div><div id="M_staff" class="col-8">1.0</div>
       </div>
       <div class="row">
-        <div class="col-4">アフィニティ</div><div id="M_affinity" class="col-8"></div>
+        <div class="col-4">アフィニティ</div><div id="M_affinity" class="col-8">1.0</div>
       </div>
       <div class="row">
-        <div class="col-4">MB.ボーナス</div><div id="M_mb_bonus" class="col-8"></div>
+        <div class="col-4">MB.ボーナス</div><div id="M_mb_bonus" class="col-8">2.9</div>
       </div>
       <div class="row">
-        <div class="col-4">MB.ボーナス(特性・装備)</div><div id="M_mb_bonus_eq" class="col-8"></div>
+        <div class="col-4">MB.ボーナス(特性・装備)</div><div id="M_mb_bonus_eq" class="col-8">1.45</div>
       </div>
       <div class="row">
-        <div class="col-4">曜日・天候</div><div id="M_effect" class="col-8"></div>
+        <div class="col-4">曜日・天候</div><div id="M_effect" class="col-8">1.25</div>
       </div>
       <div class="row">
-        <div class="col-4">レジスト</div><div id="M_gambit" class="col-8"></div>
+        <div class="col-4">レジスト</div><div id="M_resist" class="col-8">1.0</div>
       </div>
       <div class="row">
-        <div class="col-4">ガンビット</div><div id="M_gambit" class="col-8"></div>
+        <div class="col-4">ガンビット</div><div id="M_gambit" class="col-8">1.0</div>
       </div>
       <div class="row">
         <div class="col-4">魔法攻撃力</div><div id="M_m_atk" class="col-8"></div>
@@ -88,10 +93,13 @@
         敵：Triboulex(Gボス・バラモア)
       </div>
       <div class="row">
-        <div class="col-2">INT</div><div class="col-10" id="enemy_int">504</div>
+        <div class="col-2">INT</div><div class="col-10" id="enemy_int">340</div>
       </div>
       <div class="row">
-        <div  class="col-2">魔防</div><div class="col-10" id="enemy_int">100</div>
+        <div  class="col-2">魔防</div><div class="col-10" id="enemy_mbarrier">61</div>
+      </div>
+      <div class="row">
+        <div  class="col-2">魔法カット</div><div class="col-10" id="enemy_mcut">1.0</div>
       </div>
       <div class="row">
         <div class="col">火</div>

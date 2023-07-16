@@ -28,3 +28,15 @@ Route::prefix('equip')->group(function() {
     });
 });
 
+Route::prefix('enemy')->group(function() {
+    Route::get('/', [EnemyController::class, 'index'])->name('enemy.index');
+    Route::get('/new', [EnemyController::class, 'create'])->name('enemy.create');
+    Route::post('/', [EnemyController::class, 'store'])->name('enemy.store');
+});
+
+Route::prefix('magic')->group(function() {
+    Route::get('/', [MagicController::class, 'index'])->name('magic.index');
+    Route::get('/new', [MagicController::class, 'create'])->name('magic.create');
+    Route::post('/', [MagicController::class, 'store'])->name('magic.store');
+});
+

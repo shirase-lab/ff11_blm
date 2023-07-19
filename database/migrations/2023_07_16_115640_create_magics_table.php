@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('mp');
+            $table->string('attribute');
             $table->integer('base_damage');
             $table->integer('cast_time');
             $table->integer('recast_time');

@@ -1,169 +1,92 @@
 require('./bootstrap');
+var ajax = require('./ajax.js');
+var enemy = require('./enemy.js');
+var magic = require('./magic.js')
+var player = require('./player.js')
 
 $(document).ready(function () {
+  /* 初期値設定 */
   var currentEquipPart = null;
-  function parseStatus(text, status) {
-    // 抽出
-    var ret = 0;
-    var check = status + "(\\+\\d+|\\-\\d+)";
-    var reg = new RegExp(check, 'gm');
-    var matchArray = text.match(reg);
-    if (!Array.isArray(matchArray)) { return 0; }
-    matchArray.forEach(function(e) {
-      ret += parseInt(e.match(/\-*\d+/g)[0], 10);
-    });
-//    console.log(status + ":" + ret);
-    return ret;
-  }
-  
-  function updateStatus() {
+  initialize();
 
-    var status = new Object();
-    var statuses = ["HP", "MP", "STR", "DEX", "VIT", "AGI", "INT", "MND", "CHR", "魔命", "魔攻", "魔法ダメージ", "魔命スキル", "精霊魔法スキル", "マジックバーストダメージ", "マジックバーストダメージII", "マジックバースト命中"];
-    var statusArray = ["hp", "mp", "str", "dex", "vit", "agi", "int", "mnd", "chr", "m_acc", "m_atk", "m_dmg", "m_askl", "m_eskl", "m_mb", "m_mb2", "m_mba"];
-    $('.equiped_status').each(function (i, element) {
-      $.each(statuses, function(index, value) {
-        if (isNaN(status[statusArray[index]])) { status[statusArray[index]] = 0; }
-        status[statusArray[index]] += parseStatus($(element).html(), value);
-      })
-    })
-    $('.equiped_aug_status').each(function (i, element) {
-      $.each(statuses, function(index, value) {
-        status[statusArray[index]] += parseStatus($(element).html(), value);
-      })
-    })
-    $('.equiped_hide_status').each(function (i, element) {
-      $.each(statuses, function(index, value) {
-        status[statusArray[index]] += parseStatus($(element).html(), value);
-      })
-    })
+  function initialize() {
+    $("#magics").val(1);              // 魔法初期値
+    magic.initialize(cb);
+    setMagic(1, magic.set)
 
-//    $.each(status, function(key, value) {
-//      console.log(key + ":" + value);
-//    });
-//    console.log("status:" + status);
-    $.each(statusArray, function(index, value) {
-      $("#status_" + value).html(status[value]);
-    })
-    var statuses = [];
-    var i = 0;
-    $.each(statusArray, function(index, s) {
-      if (s == 'hp') {
-        let point = (1594+status[statusArray[index]]);
-        $("#status_"+s).html("1594/" + point);
-      } else if (s == 'mp') {
-        let point = (1292+status[statusArray[index]]);
-        $("#status_"+s).html("1292/" + point);
-      } else {
-        if (status[statusArray[index]] > 0) { $("#status_"+s).html("+"+status[statusArray[index]]); }
-        else if (status[statusArray[index]] == 0) { $("#status_"+s).html(""); }
-        else { $("#status_"+s).html("-"+status[statusArray[index]]); }
-      }
-      i++;
-    });
+    $("#synergy").val(0);             // 相乗効果魔法回数
+    $("#effect").val(25);             // 天候
+    $("#day").val(0);                 // 曜日
+    $("#alignment").val(5);           // 連携回数
+    uncheck($("#impact"));            // インパクト
+    $("#burn").val(63);              // バーン
+    $("#gambit_num").val(0);          // ガンビット回数
+    $("#rayke_num").val(0);           // レイク回数
+    $("#geo_effect").val(10);         // 風水魔法
+    check($("#geo_malaise"));         // ジオマレーズ
+    check($("#circle_enrich"));       // サークルエンリッチ
+    check($("#blaze_of_glory"));      // グローリーブレイズ
+    uncheck($("#bolster"));           // ボルスター
+    uncheck($("#soul_voice"));        // ソウルボイス
+    $("#learned_etude").val(0);       // 知恵のエチュード
+    $("#sage_etude").val(0);          // 英知のエチュード
 
-    $('#M_int_sum').html(getStatus($('#status_base_int')) + getStatus($('#status_int')));
-    $('#M_m_atk').html(getStatus($('#status_base_matk')) + getStatus($('#status_m_atk')));
-    $('#M_dmg').html(getStatus($('#status_m_dmg')));
-    $('#M_coefficient').html(calcIntMethod());
+    uncheck($("#bolster_indi"));      // ボルスター(インデ)
+    $("#indi").val(1);                // インデ
+    $("#entrust").val(2);             // エントラスト
+    $("#enemy").val(1);               // 敵初期値
+    $("#roll").val(7);                // ロール＋
+    check($("#job_bonus"));           // ロールジョブボーナス
+    $("#wizardz").val(12);            // ウィザーズロール
+    enemy.initialize(cb);
+    setEnemy(1, enemy.set);
+    player.initialize(cb);
+
+    magic.magic_burst_info(player.get(), enemy.get());
+
   }
 
-  function calcMagicBurst() {
-    let dValue = getStatus($('#M_Dvalue'));
-    let mDmg = getStatus($('#M_dmg'));
-    let mCoe = getStatus($('#M_coefficient'));
-    let synergy = getStatusF($('#M_synergy'));
-    let eStaff = getStatusF($('#M_staff'));
-    let affinity = getStatusF($('#M_affinity'));
-    let mbBonus = getStatusF($('#M_mb_bonus'));
-    let mbBonusEq = getStatusF($('#M_mb_bonus_eq'));
-    let effect = getStatusF($('#M_effect'));
-    let resist = getStatusF($('#M_resist'));
-    let gambit = getStatusF($('#M_gambit'));
-    let mAtack = getStatusF($('#M_m_atk'));
-    let mbarrier = getStatus($('#enemy_mbarrier'));
-    let mCut = getStatus($('#enemy_mcut'));
-    let mbDamage = Math.floor(
-      Math.floor(
-        Math.floor(
-          Math.floor(
-            Math.floor(
-              Math.floor(
-                Math.floor(
-                  Math.floor(
-                    Math.floor(
-                      Math.floor(
-                        Math.floor(dValue + mDmg + mCoe) *
-                      synergy) *
-                    eStaff) *
-                  affinity) *
-                mbBonus) *
-              mbBonusEq) *
-            effect) *
-          resist) *
-        gambit) *
-      (mAtack/mbarrier)) *
-    mCut);
-
-    console.log("mbDamage:" + mbDamage);
-    $("#mb_damage").html(mbDamage);
-    return mbDamage;
-  }
-
-  function getStatusF(elem)
+  function cb()
   {
-    return parseFloat($(elem).html().trim()) || 1.0;
+    player.buff();
+    enemy.debuff();
+    magic.magic_burst_info(player.get(), enemy.get());
+    $('#mb_damage').html(magic.MagicBurst(enemy.get()));
   }
 
-  function getStatus(elem)
-  {
-    return parseInt($(elem).html().trim(), 10) || 0;
-  }
+  /* 入力切替イベント */
+  $("#enemy").change(function() { setEnemy($(this).val(), enemy.set); } );
+  $("#magics").change(function() { setMagic($(this).val(), magic.set); });
+  $("#synergy").change(function() { cb(); });
+  $("#effect").change(function() { cb(); });
+  $("#day").change(function() { cb(); });
+  $("#alignment").change(function() { cb(); });
+  $("#impact").change(function() { cb(); });
+  $("#burn").change(function() { cb(); });
+  $("#gambit").change(function() {  }); // TODO いる？めんどくない？
+  $("#gambit_num").change(function() { cb(); });
+  $("#rayke").change(function() { }); // TODO いる？めんどくない？
+  $("#rayke_num").change(function() { cb(); });
+  $("#geo_effect").change(function() { cb(); });
+  $("#geo_malaise").change(function() { cb(); });
+  $("#circle_enrich").change(function() { cb(); });
+  $("#blaze_of_glory").change(function() { cb(); });
+  $("#bolster").change(function() { cb(); });
+  $("#soul_voice").change(function() { cb(); });
+  $("#learned_etude").change(function() { cb(); });
+  $("#sage_etude").change(function() { cb(); });
+  $("#indi").change(function() { cb(); });
+  $("#entrust").change(function() { cb(); });
+  $("#roll").change(function() { cb(); });
+  $("#job_bonus").change(function() { cb(); });
+  $("#wizardz").change(function() { cb(); });
 
-  function calcIntMethod()
-  {
-    let player_int = getStatus($('#M_int_sum'));
-    let enemy_int = getStatus($('#enemy_int'));
-    var int_diff = Math.abs(player_int - enemy_int);
-    let bMinus = (player_int - enemy_int ) < 0 ? true : false;
-    let coefficients = new Map([
-      ['500', ['1.00', 400]],
-      ['400', ['1.97', 300]],
-      ['300', ['2.97', 200]],
-      ['200', ['3.85', 100]],
-      ['100', ['4.24', 50]],
-      ['50', ['4.80', 0]],
-    ]);
-    var ret = 0;
-    // 上限値の計算とマイナス時の計算をする必要がある。
-//    console.log("int diff:" + int_diff);
-    for (let [key, value] of coefficients) {
-//      console.log("key:" + key + ", value:" + value);
-      var c = calcCoefficients(int_diff, parseInt(key, 10), parseFloat(value[0], 10), value[1]);
-      ret += c[0];
-      int_diff = c[1];
-    }
-    if (bMinus) { ret *= -1; }
-    console.log("calcIntMethod() : ret = " + ret );
-    return ret;
-  }
+  /* セッター */
+  function setEnemy(val, cb) { ajax.get('enemy/' + val, cb); }
+  function setMagic(val, cb) { ajax.get('magic/' + val, cb); }
 
-  function calcCoefficients( int_diff, threshold ,coefficient, min_threashold )
-  {
-    console.log("calcCoefficients(int diff:" + int_diff + ", threshold:" + threshold + ", coefficient:" + coefficient + ", min_threashold:" + min_threashold);
-    if (min_threashold <= int_diff && int_diff <= threshold) {
-      var ret = (int_diff - min_threashold) * coefficient;
-      int_diff -= (int_diff - min_threashold);
-      return [ret, int_diff];
-    }
-    return [0, int_diff];
-
-  }
-  
-
+  /* 装備処理 */
   function cardEquip() {
-    console.log("card-equip.onclick");
-
     var image_url = $(this).find('image').attr('xlink:href');
     var name = $(this).find('.card-title').html();
 
@@ -179,9 +102,7 @@ $(document).ready(function () {
     currentEquipPart.find('.equiped_aug_status').html($(this).find('.t_equip_aug_status').html());
     currentEquipPart.find('.equiped_hide_status').html($(this).find('.t_equip_hide_status').html());
 
-    updateStatus();
-    calcMagicBurst();
-
+    cb();
   }
 
   function clearSelect() {
@@ -205,7 +126,6 @@ $(document).ready(function () {
     search(part_id, '');
   });
 
-  /* 検索 */
   $('.user-search-form .search-icon').on('click', function () {
     let part_id = $('#part_id').attr('part_id');
     let keyword = $('#keyword').val() || '';
@@ -221,14 +141,12 @@ $(document).ready(function () {
         url: 'equip/?part_id=' + part_id + '&keyword=' + keyword + '&page=',
         dataType: 'json',
         beforeSend: function () {
-            $('.loading').removeClass('display-none');
+          $('.loading').removeClass('d-none');
         }
-    }).done(function (data) { //ajaxが成功したときの処理
-      $('.loading').addClass('display-none'); //通信中のぐるぐるを消す
+    }).done(function (data) {
+      $('.loading').addClass('d-none');
       const template = $('#equip_list_template').html();
-//      console.log(data);
       $.each(data, function (index, value) {
-//        console.log(value.status);
         var clone = $(template);
         clone.find('.card-equip').attr('id', value.id);
         clone.find('.card-equip').attr('part_id', value.part_id);
@@ -252,8 +170,8 @@ $(document).ready(function () {
           clone.find('.t_equip_aug_status').html((v.status).replace(/\r?\n/g, '<br>'));
           clone.find('.t_equip_level').html(value.level);
           clone.find('.t_equip_jobs').html(value.jobs);
-          clone.find('.t_augment_type').html(v.type);
-          clone.find('.t_augment_rank').html(v.rank);
+          clone.find('.t_augment_type').html(v._type);
+          clone.find('.t_augment_rank').html(v._rank);
           clone.find('.t_eq_svgImage').attr('xlink:href', value.image_url);
           $('#search_results').append(clone);
         });
@@ -262,7 +180,15 @@ $(document).ready(function () {
     }).fail(function (error) {
         console.log(error);
     })
+  }
 
+  function uncheck(elem)
+  {
+    elem.removeAttr('checked').prop('checked', false).change();
+  }
+  function check(elem)
+  {
+    elem.prop('checked', true).change();
   }
 
 });

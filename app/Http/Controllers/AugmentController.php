@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Augment;
 use App\Models\Equip;
@@ -9,23 +10,24 @@ use App\Models\Equip;
 class AugmentController extends Controller
 {
     //
-    public function create()
+    public function create($equip_id)
     {
-        $equips = Equip::all();
+        $equip = Equip::find($equip_id)->name;
         $augment = new Augment;
-        return view('augment/create', compact('equips', 'augment'));
+        return view('equips/augments/create', compact('equip', 'augment', 'equip_id'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $equip_id)
     {
+        Log::info($equip_id);
         $augment = new Augment;
-        $augment->equip_id = $request->equip_id;
-        $augment->rank = $request->rank;
+        $augment->equip_id = $equip_id;
+        $augment->_type = $request->type;
+        $augment->_rank = $request->rank;
         $augment->status = $request->status;
-        $augment->type = $request->type;
-        $augment->hide_status = $request->hide_status;
+        $augment->hide_status = $request->hide_status || '';
         $augment->save();
-        return redirect()->route('augment.create');
+        return redirect()->route('augment.create', ['equip_id' => $equip_id]);
     }
 
 }

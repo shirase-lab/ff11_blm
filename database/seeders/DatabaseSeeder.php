@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Magic;
+use App\Models\MagicCoefficient;
 use App\Models\Part;
+use App\Models\Enemy;
 use App\Models\Type;
 use App\Models\Equip;
 use App\Models\EquipPart;
@@ -18,32 +21,55 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $parts = ['Main'=>1, 'Sub'=>2, 'Range'=>3, 'Ammo'=>4, 'Head'=>5, 'Neck'=>6, 'Ear'=>7, 'Body'=>8, 'Hands'=>9, 'Ring'=>10, 'Back'=>11, 'Waist'=>12, 'Legs'=>13, 'Feet'=>14];
-        foreach ($parts as $key => $value) {
-            Part::create(['name' => $key, 'id' => $value]);
-        }
-        $eqparts = ['Main'=>1, 'Sub'=>2, 'Range'=>3, 'Ammo'=>4, 'Head'=>5, 'Neck'=>6, 'Ear1'=>7, 'Ear2'=>7, 'Body'=>8, 'Hands'=>9, 'Ring1'=>10, 'Ring2'=>10, 'Back'=>11, 'Waist'=>12, 'Legs'=>13, 'Feet'=>14];
-        foreach ($eqparts as $key => $value) {
-            EquipPart::create(['name' => $key, 'part_id' => $value]);
-        }
-        $types = ['格闘武器','短剣','片手剣','両手剣','片手斧','両手斧','両手槍','両手鎌','片手刀','両手刀','片手棍','両手棍','盾','グリップ',
-        '投てき','弓術','射撃','釣り竿','矢','ボルト','銃弾','投てき(アクセサリ型)','投てき(消費型)','汁', 'ペットフード','餌',
-        '頭装備', '首装備', '耳装備', '右耳装備', '胴装備',  '両手装備', '指輪装備', '背中装備', '腰装備', '両脚装備', '両足装備'];
-        foreach ($types as $type) {
-            Type::create(['name' => $type]);
-        }
         // \App\Models\User::factory(10)->create();
+        $json = file_get_contents(__DIR__ . '/data/augments.json');
+        $augments = json_decode($json, true);
+        foreach ($augments as $augment) {
+            Augment::create($augment);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/enemies.json');
+        $enemies = json_decode($json, true);
+        foreach ($enemies as $enemy) {
+            Enemy::create($enemy);
+        }
+
         $json = file_get_contents(__DIR__ . '/data/equips.json');
         $equips = json_decode($json, true);
         foreach ($equips as $equip) {
             Equip::create($equip);
         }
 
-        $json = file_get_contents(__DIR__ . '/data/augment.json');
-        $equips = json_decode($json, true);
-        foreach ($equips as $equip) {
-            Augment::create($equip);
+        $json = file_get_contents(__DIR__ . '/data/parts.json');
+        $parts = json_decode($json, true);
+        foreach ($parts as $part) {
+            Part::create($part);
         }
+
+        $json = file_get_contents(__DIR__ . '/data/types.json');
+        $types = json_decode($json, true);
+        foreach ($types as $type) {
+            Type::create($type);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/equip_parts.json');
+        $equip_parts = json_decode($json, true);
+        foreach ($equip_parts as $equip_part) {
+            EquipPart::create($equip_part);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/magics.json');
+        $magics = json_decode($json, true);
+        foreach ($magics as $magic) {
+            Magic::create($magic);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/magic_coefficients.json');
+        $magic_coefficients = json_decode($json, true);
+        foreach ($magic_coefficients as $magic_coefficient) {
+            MagicCoefficient::create($magic_coefficient);
+        }
+
 
     }
 }

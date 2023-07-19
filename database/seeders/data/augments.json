@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "_rank": 15,
+        "_type": "A",
+        "status": "[1]Ｄ+8\r\n[2]魔攻+15\r\n[3]-\r\n",
+        "equip_id": 1,
+        "hide_status": ""
+    },
+    {
+        "id": 2,
+        "_rank": 20,
+        "_type": "A",
+        "status": "[1]Ｄ+9\r\n[2]魔攻+20\r\n[3]命中+5 魔命+5\r\n",
+        "equip_id": 1,
+        "hide_status": ""
+    },
+    {
+        "id": 3,
+        "_rank": 25,
+        "_type": "A",
+        "status": "[1]Ｄ+10\r\n[2]魔攻+25\r\n[3]命中+10 魔命+10\r\n[4]敵対心-3\r\n",
+        "equip_id": 1,
+        "hide_status": ""
+    },
+    {
+        "id": 4,
+        "_rank": 30,
+        "_type": "A",
+        "status": "[1]Ｄ+11\r\n[2]魔攻+30\r\n[3]命中+15 魔命+15\r\n[4]敵対心-5\r\n",
+        "equip_id": 1,
+        "hide_status": ""
+    },
+    {
+        "id": 5,
+        "_rank": 15,
+        "_type": "A",
+        "status": "[1]魔法ダメージ+10\r\n[2]INT+5\r\n",
+        "equip_id": 4,
+        "hide_status": ""
+    },
+    {
+        "id": 6,
+        "_rank": 25,
+        "_type": "A",
+        "status": "[1]INT+15 MND+15\r\n[2]マジックバーストダメージ+10\r\n[3]マジックバースト命中+25",
+        "equip_id": 19,
+        "hide_status": ""
+    },
+    {
+        "id": 7,
+        "_rank": 15,
+        "_type": "A",
+        "status": "[1]魔命+10\r\n[2]INT+10/MND+10/CHR+10",
+        "equip_id": 26,
+        "hide_status": ""
+    },
+    {
+        "id": 8,
+        "_rank": 0,
+        "_type": "-",
+        "status": "INT+30\r\n魔攻+10\r\n魔命+20 魔法ダメージ+20",
+        "equip_id": 22,
+        "hide_status": ""
+    },
+    {
+        "id": 9,
+        "_rank": 15,
+        "_type": "A",
+        "status": "[1]魔命+15\r\n[2]INT+10",
+        "equip_id": 23,
+        "hide_status": ""
+    },
+    {
+        "id": 15,
+        "_rank": 15,
+        "_type": "A",
+        "status": "[1]魔攻+15\r\n[2]マジックバーストダメージII+3\r\n[3]―",
+        "equip_id": 28,
+        "hide_status": "0"
+    },
+    {
+        "id": 16,
+        "_rank": 20,
+        "_type": "A",
+        "status": "[1]魔攻+20\r\n[2]マジックバーストダメージII+4\r\n[3]命中+5 魔命+5",
+        "equip_id": 28,
+        "hide_status": "0"
+    },
+    {
+        "id": 17,
+        "_rank": 25,
+        "_type": "A",
+        "status": "[1]魔攻+23\r\n[2]マジックバーストダメージII+5\r\n[3]命中+10 魔命+10\r\n[4]MND+3",
+        "equip_id": 28,
+        "hide_status": "0"
+    },
+    {
+        "id": 18,
+        "_rank": 30,
+        "_type": "A",
+        "status": "[1]魔攻+25\r\n[2]マジックバーストダメージII+6\r\n[3]命中+15 魔命+15\r\n[4]MND+5",
+        "equip_id": 28,
+        "hide_status": "0"
+    }
+]

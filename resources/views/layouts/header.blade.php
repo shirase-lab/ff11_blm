@@ -1,4 +1,5 @@
 @section('header')
+<header class="w-100 d-flex justify-content-between align-items-center bg-dark px-3">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">ブランド</a>
@@ -27,6 +28,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+</header>
 
 @show

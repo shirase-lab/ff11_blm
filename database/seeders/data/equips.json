@@ -357,7 +357,6 @@
         "rare": 0,
         "level": 99,
         "status": "INT+6 MND+6 CHR+6 60HPをMPに変換\r\nユニティランク:魔命+5",
-        "hide_status": "HP-60 MP+60",
         "part_id": 10,
         "quality": 0,
         "type_id": 33,
@@ -377,5 +376,19 @@
         "type_id": 33,
         "image_url": "https://www.bg-wiki.com/images/0/0c/Medada%27s_Ring_icon.png",
         "yougo_url": "https://wiki.ffo.jp/html/39074.html"
+    },
+    {
+        "ex": 1,
+        "id": 28,
+        "jobs": "黒学風剣",
+        "name": "アグゥゲージ",
+        "rare": 0,
+        "level": 119,
+        "status": "防116 HP+38 MP+73 STR+14 DEX+38\r\nVIT+23 AGI+6 INT+33 MND+40 CHR+25\r\n命中+40 魔命+40 魔攻+35 魔法ダメージ+20\r\n回避+60 魔回避+96 魔防+5 ヘイスト+3%\r\nマジックバーストダメージ+8 ファストキャスト+6%\r\n被ケアル回復量+10% レジストサイレス+10",
+        "part_id": 9,
+        "quality": 0,
+        "type_id": 32,
+        "image_url": "https://www.bg-wiki.com/images/b/b5/Agwu%27s_Gages_icon.png",
+        "yougo_url": "https://wiki.ffo.jp/html/38254.html"
     }
 ]

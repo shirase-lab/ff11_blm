@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "mp": 156,
+    "name": "ストーンV",
+    "attribute": "earth",
+    "cast_time": 7500,
+    "base_damage": 650,
+    "recast_time": 45000
+  },
+  {
+    "id": 2,
+    "mp": 175,
+    "name": "ウォータV",
+    "attribute": "water",
+    "cast_time": 7500,
+    "base_damage": 700,
+    "recast_time": 45000
+  },
+  {
+    "id": 3,
+    "mp": 198,
+    "name": "エアロV",
+    "attribute": "aero",
+    "cast_time": 7500,
+    "base_damage": 750,
+    "recast_time": 45000
+  },
+  {
+    "id": 4,
+    "mp": 228,
+    "name": "ファイアV",
+    "attribute": "fire",
+    "cast_time": 7500,
+    "base_damage": 800,
+    "recast_time": 45000
+  },
+  {
+    "id": 5,
+    "mp": 306,
+    "name": "サンダーV",
+    "attribute": "thunder",
+    "cast_time": 7500,
+    "base_damage": 900,
+    "recast_time": 45000
+  },
+  {
+    "id": 6,
+    "mp": 267,
+    "name": "ブリザドV",
+    "attribute": "ice",
+    "cast_time": 7500,
+    "base_damage": 850,
+    "recast_time": 45000
+  },
+  {
+    "id": 7,
+    "mp": 298,
+    "name": "ストンジャ",
+    "attribute": "earth",
+    "cast_time": 7000,
+    "base_damage": 750,
+    "recast_time": 45000
+  },
+  {
+    "id": 8,
+    "mp": 318,
+    "name": "ウォタジャ",
+    "attribute": "water",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 45000
+  },
+  {
+    "id": 9,
+    "mp": 338,
+    "name": "エアロジャ",
+    "attribute": "aero",
+    "cast_time": 7000,
+    "base_damage": 850,
+    "recast_time": 45000
+  },
+  {
+    "id": 10,
+    "mp": 358,
+    "name": "ファイジャ",
+    "attribute": "fire",
+    "cast_time": 7000,
+    "base_damage": 900,
+    "recast_time": 45000
+  },
+  {
+    "id": 11,
+    "mp": 378,
+    "name": "ブリザジャ",
+    "attribute": "ice",
+    "cast_time": 7000,
+    "base_damage": 950,
+    "recast_time": 45000
+  },
+  {
+    "id": 12,
+    "mp": 398,
+    "name": "サンダジャ",
+    "attribute": "thunder",
+    "cast_time": 7000,
+    "base_damage": 1000,
+    "recast_time": 45000
+  },
+  {
+    "id": 13,
+    "mp": 350,
+    "name": "コメット",
+    "attribute": "dark",
+    "cast_time": 10000,
+    "base_damage": 1000,
+    "recast_time": 45000
+  },
+  {
+    "id": 14,
+    "mp": 280,
+    "name": "フレアII",
+    "attribute": "fire",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 15,
+    "mp": 280,
+    "name": "フリーズII",
+    "attribute": "ice",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 16,
+    "mp": 280,
+    "name": "トルネドII",
+    "attribute": "aero",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 17,
+    "mp": 280,
+    "name": "クエイクII",
+    "attribute": "earth",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 18,
+    "mp": 280,
+    "name": "バーストII",
+    "attribute": "thunder",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 19,
+    "mp": 280,
+    "name": "フラッドII",
+    "attribute": "water",
+    "cast_time": 7000,
+    "base_damage": 800,
+    "recast_time": 60000
+  },
+  {
+    "id": 20,
+    "mp": 237,
+    "name": "ストーンVI",
+    "attribute": "earth",
+    "cast_time": 10500,
+    "base_damage": 950,
+    "recast_time": 60000
+  },
+  {
+    "id": 21,
+    "mp": 266,
+    "name": "ウォータVI",
+    "attribute": "water",
+    "cast_time": 10500,
+    "base_damage": 1010,
+    "recast_time": 60000
+  },
+  {
+    "id": 22,
+    "mp": 299,
+    "name": "エアロVI",
+    "attribute": "aero",
+    "cast_time": 10500,
+    "base_damage": 1070,
+    "recast_time": 60000
+  },
+  {
+    "id": 23,
+    "mp": 339,
+    "name": "ファイアVI",
+    "attribute": "fire",
+    "cast_time": 10500,
+    "base_damage": 1130,
+    "recast_time": 60000
+  },
+  {
+    "id": 24,
+    "mp": 386,
+    "name": "ブリザドVI",
+    "attribute": "ice",
+    "cast_time": 10500,
+    "base_damage": 1190,
+    "recast_time": 60000
+  },
+  {
+    "id": 25,
+    "mp": 437,
+    "name": "サンダーVI",
+    "attribute": "thunder",
+    "cast_time": 10500,
+    "base_damage": 1250,
+    "recast_time": 60000
+  }
+]

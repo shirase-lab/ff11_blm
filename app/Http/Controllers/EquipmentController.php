@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Augment;
 use App\Models\Equip;
 use App\Models\EquipPart;
+use App\Models\Enemy;
 use App\Models\Part;
 use App\Models\Type;
+use App\Models\Magic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 
@@ -17,8 +19,11 @@ class EquipmentController extends Controller
     {
         $eqparts = EquipPart::all();
         $results = [];
+        $magics = Magic::all()->pluck('name', 'id');
+        $magic = Magic::all()->first();
+        $enemies = Enemy::all()->pluck('name', 'id');
 
-        return view('equip', compact('eqparts', "results"));
+        return view('equip', compact('eqparts', "results", "magics", "magic", 'enemies'));
     }
 
     //
@@ -57,7 +62,7 @@ class EquipmentController extends Controller
         $equip->type_id = $request->type_id;
         $equip->quality = $request->quality;
         if (isset($request->ex) && $request->ex == "on") { $equip->ex = true; }
-        if (isset($equip->rare) && $request->rare == "on") { $equip->rare = true; }
+        if (isset($request->rare) && $request->rare == "on") { $equip->rare = true; }
         $equip->status = $request->status;
         $equip->level = $request->level;
         $equip->jobs = $request->jobs;

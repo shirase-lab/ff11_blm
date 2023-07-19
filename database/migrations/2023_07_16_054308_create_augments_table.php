@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('augments', function (Blueprint $table) {
             $table->id();
             $table->integer('equip_id');
-            $table->integer('rank')->default('0');
-            $table->string('type')->default('');
+            $table->integer('_rank')->default('0');
+            $table->string('_type')->default('');
             $table->string('status')->default('');
             $table->string('hide_status')->default('');
             $table->timestamps();

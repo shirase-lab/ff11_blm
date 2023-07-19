@@ -20,6 +20,7 @@ exports.set = (data) =>
 {
   copy(data, enemy);
   console.log("int" + enemy.int);
+  $('#enemy_name').html(enemy.name);
   $('#enemy_int').html(enemy.int);
   $('#enemy_mbarrier').html(enemy.barrier);
   $('#enemy_resist_fire').html(enemy.fire);
@@ -101,6 +102,7 @@ exports.debuff = () =>
 
 function copy(src, dst)
 {
+  dst.name = src.name;
   dst.int = src.eint;
   dst.barrier = src.barrier;
   dst.fire = src.fire;

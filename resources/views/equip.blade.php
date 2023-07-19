@@ -402,7 +402,7 @@
 <div class="row">
   <div class="col-8">
     Juvenileの<span id="magic_name"></span>が発動。<br>
-    →マジックバースト！Triboulexに、<span id="mb_damage"></span>ダメージ。
+    →マジックバースト！<span id="enemy_name"></span>に、<span id="mb_damage"></span>ダメージ。
   </div>
   <div class="col-4">
     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">

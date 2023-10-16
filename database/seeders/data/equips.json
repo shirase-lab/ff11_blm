@@ -544,5 +544,62 @@
     "type_id": 28,
     "image_url": "https://www.bg-wiki.com/images/a/ac/Mizu._Kubikazari_icon.png",
     "yougo_url": "https://wiki.ffo.jp/html/31253.html"
+  },
+  {
+    "ex": 1,
+    "id": 40,
+    "jobs": "黒",
+    "name": "スピコナコート",
+    "rare": 0,
+    "level": 109,
+    "status": "防89 HP+25 MP+49 STR+13 DEX+13\r\nVIT+13 AGI+13 INT+18 MND+18 CHR+18\r\n魔命+10 回避+19 魔回避+54 魔防+3\r\n弱体魔法スキル+15 ヘイスト+2% 敵対心-6\r\n与えた属性魔法ダメージの2%をMPに変換",
+    "part_id": 8,
+    "quality": 0,
+    "type_id": 1,
+    "image_url": "https://www.bg-wiki.com/images/1/12/Spaekona%27s_Coat_icon.png",
+    "yougo_url": "https://wiki.ffo.jp/html/29839.html"
+  },
+  {
+    "ex": 1,
+    "id": 41,
+    "jobs": "黒",
+    "name": "ＳＰコート+1",
+    "rare": 0,
+    "level": 119,
+    "status": "防123 HP+54 MP+59 STR+21 DEX+21\r\nVIT+21 AGI+21 INT+29 MND+29 CHR+29\r\n魔命+10 回避+41 魔回避+80 魔防+6\r\n弱体魔法スキル+15 ヘイスト+3% 敵対心-7\r\n与えた属性魔法ダメージの2%をMPに変換",
+    "part_id": 8,
+    "quality": 0,
+    "type_id": 1,
+    "image_url": "https://www.bg-wiki.com/images/1/12/Spaekona%27s_Coat_icon.png",
+    "yougo_url": "https://wiki.ffo.jp/html/29839.html"
+  },
+  {
+    "ex": 1,
+    "id": 42,
+    "jobs": "黒",
+    "name": "ＳＰコート+2",
+    "rare": 0,
+    "level": 119,
+    "status": "防133 HP+81 MP+88 STR+26 DEX+26\r\nVIT+26 AGI+26 INT+34 MND+34 CHR+34\r\n魔命+45 魔法ダメージ+38 回避+51 魔回避+90\r\n魔防+6 弱体魔法スキル+19 ヘイスト+3% 敵対心-8\r\n与えた属性魔法ダメージの2%をMPに変換\r\nコンビネーション:命中+ 飛命+ 魔命+",
+    "part_id": 8,
+    "quality": 0,
+    "type_id": 1,
+    "image_url": "https://www.bg-wiki.com/images/1/12/Spaekona%27s_Coat_icon.png",
+    "yougo_url": "https://wiki.ffo.jp/html/29839.html"
+  },
+  {
+    "ex": 1,
+    "id": 43,
+    "jobs": "黒",
+    "name": "ＳＰコート+3",
+    "rare": 0,
+    "level": 119,
+    "status": "防143 HP+91 MP+98 STR+31 DEX+31\r\nVIT+31 AGI+31 INT+39 MND+39 CHR+39\r\n魔命+55 魔法ダメージ+48 回避+61 魔回避+100\r\n魔防+7 弱体魔法スキル+21 ヘイスト+3% 敵対心-9\r\n与えた属性魔法ダメージの2%をMPに変換\r\nコンビネーション:命中+ 飛命+ 魔命+",
+    "part_id": 8,
+    "quality": 0,
+    "type_id": 1,
+    "image_url": "https://www.bg-wiki.com/images/1/12/Spaekona%27s_Coat_icon.png",
+    "yougo_url": "https://wiki.ffo.jp/html/29839.html"
   }
+
 ]

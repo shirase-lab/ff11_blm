@@ -4,7 +4,7 @@
     "geo": 50,
     "ice": 8,
     "aero": 10,
-    "dark": 5,
+    "dark": 1,
     "eint": 363,
     "fire": 10,
     "name": "Dhartok",
@@ -61,6 +61,22 @@
     "water": 10,
     "barrier": 122,
     "remarks": "ソーティHボス\r\nRUN/DRK\r\n\r\nLv145 HP約160万\r\nINT494 MND427\r\n斬突打魔息＋0% 風－50%\r\n火氷風土雷水光闇5%\r\n弱点属性70%\r\n魔防122 回避1613\r\n累積履行WS－90% ミュイン・同一技耐性なし",
+    "thunder": 10
+  },
+  {
+    "id": 1,
+    "geo": 0,
+    "ice": 8,
+    "aero": 10,
+    "dark": 1,
+    "eint": 363,
+    "fire": 10,
+    "name": "Ghatjot",
+    "earth": 11,
+    "light": 10,
+    "water": 16,
+    "barrier": 100,
+    "remarks": "ソーティAボス\r\nWAR/BLM\r\n\r\nLv145 HP約156万\r\nINT363 MND338\r\n斬突打魔息＋0% 風50%\r\n土85% 火風雷光70% 氷50% 闇5% 水吸収\r\n魔防100 回避xxxx\r\n累積履行・累積WS－90%\r\nミュイン・同一技耐性なし",
     "thunder": 10
   }
 ]

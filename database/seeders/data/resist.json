@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "_rank": "A+",
+    "alignment": 5,
+    "mb": 0
+  },
+  {
+    "id": 2,
+    "_rank": "A",
+    "alignment": 10,
+    "mb": 0
+  },
+  {
+    "id": 3,
+    "_rank": "B+",
+    "alignment": 15,
+    "mb": 0
+  },
+  {
+    "id": 4,
+    "_rank": "B",
+    "alignment": 20,
+    "mb": 0
+  },
+  {
+    "id": 5,
+    "_rank": "B-",
+    "alignment": 25,
+    "mb": 0
+  },
+  {
+    "id": 6,
+    "_rank": "C+",
+    "alignment": 30,
+    "mb": 0
+  },
+  {
+    "id": 7,
+    "_rank": "C",
+    "alignment": 40,
+    "mb": 0
+  },
+  {
+    "id": 8,
+    "_rank": "C-",
+    "alignment": 50,
+    "mb": 5
+  },
+  {
+    "id": 9,
+    "_rank": "D",
+    "alignment": 60,
+    "mb": 15
+  },
+  {
+    "id": 10,
+    "_rank": "E",
+    "alignment": 70,
+    "mb": 40
+  },
+  {
+    "id": 11,
+    "_rank": "F",
+    "alignment": 85,
+    "mb": 60
+  },
+  {
+    "id": 12,
+    "_rank": "G",
+    "alignment": 100,
+    "mb": 85
+  },
+  {
+    "id": 13,
+    "_rank": "H",
+    "alignment": 115,
+    "mb": 115
+  },
+  {
+    "id": 14,
+    "_rank": "I",
+    "alignment": 130,
+    "mb": 150
+  },
+  {
+    "id": 15,
+    "_rank": "J",
+    "alignment": 150,
+    "mb": 150
+  },
+  {
+    "id": 16,
+    "_rank": "S",
+    "alignment": -100,
+    "mb": -100
+  }
+
+]

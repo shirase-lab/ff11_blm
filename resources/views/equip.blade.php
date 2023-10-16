@@ -118,7 +118,7 @@
     {{Form::label('rayke_num', 'レイク', ['class' =>"form-label"] )}}
   </div>
   <div class="col-7">
-    {{Form::select('rayke_num', [0 => '０', -1 => '１', -2 => '２', -3 => '３'], ['class' =>"form-control"] )}}
+    {{Form::select('rayke_num', [0 => '０', 1 => '１', 2 => '２', 3 => '３'], ['class' =>"form-control"] )}}
   </div>
 </div>
 
@@ -208,52 +208,68 @@
     <div class="col-12 border text-center" id="enemy_info"></div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">敵INT</div>
-    <div class="col-4 border text-end" id="enemy_int"></div>
+    <div class="col-6 border text-end">敵INT</div>
+    <div class="col-6 border text-end" id="enemy_int"></div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">敵魔防</div>
-    <div class="col-4 border text-end" id="enemy_mbarrier"></div>
+    <div class="col-6 border text-end">敵魔防</div>
+    <div class="col-6 border text-end" id="enemy_mbarrier"></div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">敵魔法カット</div>
-    <div class="col-4 border text-end" id="enemy_mcut">1.0</div>
+    <div class="col-6 border text-end">敵魔法カット</div>
+    <div class="col-6 border text-end" id="enemy_mcut">1.0</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">風水耐性</div>
-    <div class="col-4 border text-end"><span id="enemy_georesist"></span>%</div>
+    <div class="col-6 border text-end">風水耐性</div>
+    <div class="col-6 border text-end"><span id="enemy_georesist"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">火</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_fire"></span>%</div>
+    <div class="col-6 border text-end">火</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_fire_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_fire_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_fire"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">土</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_earth"></span>%</div>
+    <div class="col-6 border text-end">土</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_earth_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_earth_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_earth"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">水</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_water"></span>%</div>
+    <div class="col-6 border text-end">水</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_water_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_water_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_water"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">風</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_aero"></span>%</div>
+    <div class="col-6 border text-end">風</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_aero_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_aero_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_aero"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">氷</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_ice"></span>%</div>
+    <div class="col-6 border text-end">氷</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_ice_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_ice_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_ice"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">雷</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_thunder"></span>%</div>
+    <div class="col-6 border text-end">雷</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_thunder_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_thunder_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_thunder"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">光</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_light"></span>%</div>
+    <div class="col-6 border text-end">光</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_light_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_light_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_light"></span>%</div>
   </div>
   <div class="row">
-    <div class="col-8 border text-end">闇</div>
-    <div class="col-4 border text-end"><span id="enemy_resist_dark"></span>%</div>
+    <div class="col-6 border text-end">闇</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_dark_rank"></span></div>
+    <div class="col-2 border text-end"><span id="enemy_resist_dark_alignment"></span>%</div>
+    <div class="col-2 border text-end"><span id="enemy_resist_dark"></span>%</div>
   </div>
 </div>
 

@@ -16,6 +16,8 @@ var enemy = {
   'debuff_barrier': 0,
 };
 
+var resist;
+
 exports.set = (data) =>
 {
   copy(data, enemy);
@@ -23,22 +25,42 @@ exports.set = (data) =>
   $('#enemy_name').html(enemy.name);
   $('#enemy_int').html(enemy.int);
   $('#enemy_mbarrier').html(enemy.barrier);
-  $('#enemy_resist_fire').html(enemy.fire);
-  $('#enemy_resist_earth').html(enemy.earth);
-  $('#enemy_resist_water').html(enemy.water);
-  $('#enemy_resist_aero').html(enemy.aero);
-  $('#enemy_resist_ice').html(enemy.ice);
-  $('#enemy_resist_thunder').html(enemy.thunder);
-  $('#enemy_resist_light').html(enemy.light);
-  $('#enemy_resist_dark').html(enemy.dark);
+  
+  $('#enemy_resist_fire_rank').html(getResistRank(enemy.fire));
+  $('#enemy_resist_earth_rank').html(getResistRank(enemy.earth));
+  $('#enemy_resist_water_rank').html(getResistRank(enemy.water));
+  $('#enemy_resist_aero_rank').html(getResistRank(enemy.aero));
+  $('#enemy_resist_ice_rank').html(getResistRank(enemy.ice));
+  $('#enemy_resist_thunder_rank').html(getResistRank(enemy.thunder));
+  $('#enemy_resist_light_rank').html(getResistRank(enemy.light));
+  $('#enemy_resist_dark_rank').html(getResistRank(enemy.dark));
+  
+  $('#enemy_resist_fire_alignment').html(getResistAlignment(enemy.fire));
+  $('#enemy_resist_earth_alignment').html(getResistAlignment(enemy.earth));
+  $('#enemy_resist_water_alignment').html(getResistAlignment(enemy.water));
+  $('#enemy_resist_aero_alignment').html(getResistAlignment(enemy.aero));
+  $('#enemy_resist_ice_alignment').html(getResistAlignment(enemy.ice));
+  $('#enemy_resist_thunder_alignment').html(getResistAlignment(enemy.thunder));
+  $('#enemy_resist_light_alignment').html(getResistAlignment(enemy.light));
+  $('#enemy_resist_dark_alignment').html(getResistAlignment(enemy.dark));
+
+  $('#enemy_resist_fire').html(getResist(enemy.fire));
+  $('#enemy_resist_earth').html(getResist(enemy.earth));
+  $('#enemy_resist_water').html(getResist(enemy.water));
+  $('#enemy_resist_aero').html(getResist(enemy.aero));
+  $('#enemy_resist_ice').html(getResist(enemy.ice));
+  $('#enemy_resist_thunder').html(getResist(enemy.thunder));
+  $('#enemy_resist_light').html(getResist(enemy.light));
+  $('#enemy_resist_dark').html(getResist(enemy.dark));
   $('#enemy_georesist').html(enemy.geo);
   $('#enemy_info').html(enemy.remarks);
   $('#enemy_mcut').html(enemy.cut);
   enemy.cb();
 }
-exports.initialize = (cb) =>
+exports.initialize = (cb, resist) =>
 {
   enemy.cb = cb;
+  enemy.resist = resist;
 }
 
 exports.get = () =>
@@ -46,6 +68,20 @@ exports.get = () =>
   return enemy;
 }
 
+function getResist(element)
+{
+  return enemy.resist[element - 1].mb;
+}
+
+function getResistRank(element)
+{
+  return enemy.resist[element - 1]._rank;
+}
+
+function getResistAlignment(element)
+{
+  return enemy.resist[element - 1].alignment;
+}
 function impact()
 {
   if (!$('#impact').prop("checked")) { return 0; }
@@ -76,6 +112,7 @@ exports.debuff = () =>
   var e = parseInt($('#geo_effect').val(), 10);
   var m = $('#geo_malaise').prop("checked");
   var b = enemy.barrier;
+  enemy.debuff_barrier = 0;
   if (m) {
     var down = 15 + (e * 3);
     var down_effect = 1.0;

@@ -5,6 +5,7 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\AugmentController;
 use App\Http\Controllers\EnemyController;
 use App\Http\Controllers\MagicController;
+use App\Http\Controllers\ResistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,8 @@ Route::prefix('magic')->group(function() {
     Route::get('/new', [MagicController::class, 'create'])->name('magic.create');
     Route::post('/', [MagicController::class, 'store'])->name('magic.store');
     Route::get('/{id}', [MagicController::class, 'show'])->name('magic.show');
+});
+
+Route::prefix('resist')->group(function() {
+    Route::get('/', [ResistController::class, 'index'])->name('resist.index');
 });

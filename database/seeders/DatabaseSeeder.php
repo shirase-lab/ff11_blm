@@ -11,6 +11,7 @@ use App\Models\Type;
 use App\Models\Equip;
 use App\Models\EquipPart;
 use App\Models\Augment;
+use App\Models\Resist;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +27,12 @@ class DatabaseSeeder extends Seeder
         $augments = json_decode($json, true);
         foreach ($augments as $augment) {
             Augment::create($augment);
+        }
+
+        $json = file_get_contents(__DIR__ . '/data/resist.json');
+        $resists = json_decode($json, true);
+        foreach ($resists as $resist) {
+            Resist::create($resist);
         }
 
         $json = file_get_contents(__DIR__ . '/data/enemies.json');

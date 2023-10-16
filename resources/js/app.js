@@ -8,9 +8,15 @@ $(document).ready(function () {
   /* 初期値設定 */
   var currentEquipPart = null;
   initialize();
+  var resist ;
 
   function initialize() {
     $("#magics").val(1);              // 魔法初期値
+    ajax.get('resist/', function(data) {
+      resist = data;
+      enemy.initialize(cb, resist);
+      magic.magic_burst_info(player.get(), enemy.get(), resist);
+    });
     magic.initialize(cb);
     setMagic(1, magic.set)
 
@@ -38,19 +44,15 @@ $(document).ready(function () {
     $("#roll").val(7);                // ロール＋
     check($("#job_bonus"));           // ロールジョブボーナス
     $("#wizardz").val(12);            // ウィザーズロール
-    enemy.initialize(cb);
     setEnemy(1, enemy.set);
     player.initialize(cb);
-
-    magic.magic_burst_info(player.get(), enemy.get());
-
   }
 
   function cb()
   {
     player.buff();
     enemy.debuff();
-    magic.magic_burst_info(player.get(), enemy.get());
+    magic.magic_burst_info(player.get(), enemy.get(), resist);
     $('#mb_damage').html(magic.MagicBurst(enemy.get()));
   }
 

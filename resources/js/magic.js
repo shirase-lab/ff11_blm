@@ -78,13 +78,13 @@ exports.MagicBurst = (enemy) =>
   return mbDamage;
 }
 
-exports.magic_burst_info = (player, enemy) =>
+exports.magic_burst_info = (player, enemy, resist) =>
 {
   magic_burst.int_sum = player.int + player.add_int;
   magic_burst.magic_attack = player.magic_attack + player.add_magic_attack;
   magic_burst.magic_damage = player.magic_damage + player.add_magic_damage;
   magic_burst.int_method = int_method(magic_burst.int_sum, parseInt($("#enemy_int").html(), 10));
-  magic_burst.mb_bonus = magic_burst.base_mb_bonus + resist_table[get_resist(magic_burst.attribute, enemy)] + parseInt($('#alignment').val());
+  magic_burst.mb_bonus = magic_burst.base_mb_bonus + get_resist(magic_burst.attribute, enemy, resist) + parseInt($('#alignment').val());
   magic_burst.synergy = $('#synergy').val();
   magic_burst.affinity = 0; // TODO
   magic_burst.effect = parseInt($("#effect").val(), 10) + parseInt($("#day").val(), 10);
@@ -123,7 +123,7 @@ function int_method(player_int, enemy_int)
   });
   if (bMinus) { ret *= -1; }
   console.log("calcIntMethod() : ret = " + ret );
-  return ret;
+  return parseInt(ret, 10);
 }
 
 function calcCoefficients( int_diff, threshold ,coefficient, min_threashold )
@@ -137,19 +137,35 @@ function calcCoefficients( int_diff, threshold ,coefficient, min_threashold )
 }
 
 
-function get_resist(attribute, enemy)
+function get_resist(attribute, enemy, resist)
 {
+  var rayke = parseInt($("#rayke_num").val());
   var ret = 0;
-  if (attribute == 'fire') { ret = enemy.fire; }
-  else if (attribute == 'earth') { ret = enemy.earth; }
-  else if (attribute == 'water') { ret = enemy.water; }
-  else if (attribute == 'aero') { ret = enemy.aero; }
-  else if (attribute == 'ice') { ret = enemy.ice; }
-  else if (attribute == 'thunder') { ret = enemy.thunder; }
-  else if (attribute == 'light') { ret = enemy.light; }
-  else if (attribute == 'dark') { ret = enemy.dark; }
+  if (attribute == 'fire') { ret = calc_rayke(enemy.fire, resist, rayke); }
+  else if (attribute == 'earth') { ret = calc_rayke(enemy.earth, resist, rayke); }
+  else if (attribute == 'water') { ret = calc_rayke(enemy.water, resist, rayke); }
+  else if (attribute == 'aero') { ret = calc_rayke(enemy.aero, resist, rayke); }
+  else if (attribute == 'ice') { ret = calc_rayke(enemy.ice, resist, rayke); }
+  else if (attribute == 'thunder') { ret = calc_rayke(enemy.thunder, resist, rayke); }
+  else if (attribute == 'light') { ret = calc_rayke(enemy.light, resist, rayke); }
+  else if (attribute == 'dark') { ret = calc_rayke(enemy.dark, resist, rayke); }
   else {
     ret = 0;
   }
   return ret;
+}
+
+function calc_rayke(element, resist, rayke)
+{
+  if (element <= 0) { return resist[0].mb; }
+  if (resist[element - 1]._rank == "S") {
+    return resist[element - 1].mb;
+  }
+  var mb = resist[element - 1].mb;
+  if (element + rayke >= 15) {
+    mb = resist[14].mb;
+  } else {
+    mb = resist[element - 1 + rayke].mb;
+  }
+  return mb;
 }

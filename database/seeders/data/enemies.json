@@ -1,1 +1,66 @@
-[{"id": 1, "geo": 50, "ice": 50, "aero": 70, "dark": 5, "eint": 363, "fire": 70, "name": "Dhartok", "earth": 85, "light": 70, "water": 100, "barrier": 100, "remarks": "ソーティEボス\r\nWAR/BLM\r\n\r\nLv145 HP約156万\r\nINT363 MND338\r\n斬突打魔息＋0% 風－50%\r\n土85% 火風雷光70% 氷50% 闇5% 水吸収\r\n魔防100 回避1581\r\n累積履行・累積WS－90%\r\nミュイン・同一技耐性なし", "thunder": 70}, {"id": 2, "geo": 50, "ice": 70, "aero": 5, "dark": 5, "eint": 350, "fire": 5, "name": "Gartell", "earth": 70, "light": 5, "water": 5, "barrier": 100, "remarks": "ソーティFボス\r\nMNK/BLM\r\n\r\nLv145 HP約160万\r\nINT350 MND394\r\n斬突打魔息＋0% 風－50%\r\n火氷風土雷水光闇5%\r\n風モード時 氷70% 風吸収\r\n雷モード時 土70% 雷吸収\r\n魔防100 回避1613", "thunder": 5}, {"id": 3, "geo": 50, "ice": 30, "aero": 50, "dark": 100, "eint": 504, "fire": 60, "name": "Triboulex", "earth": 40, "light": 70, "water": 50, "barrier": 100, "remarks": "ソーティGボス\r\nLv145 HP約150万\r\nINT504/MND367\r\n斬突打魔息＋0% 風－50%\r\n光70% 火雷60% 風水50% 土40% 氷30% 闇吸収\r\n魔防100 回避1581\r\n累積履行・累積WS－90%\r\nミュイン耐性：なし\r\n同一ウェポンスキル耐性：", "thunder": 60}, {"id": 4, "geo": 50, "ice": 70, "aero": 70, "dark": 70, "eint": 494, "fire": 70, "name": "Aita", "earth": 70, "light": 70, "water": 70, "barrier": 122, "remarks": "ソーティHボス\r\nRUN/DRK\r\n\r\nLv145 HP約160万\r\nINT494 MND427\r\n斬突打魔息＋0% 風－50%\r\n火氷風土雷水光闇5%\r\n弱点属性70%\r\n魔防122 回避1613\r\n累積履行WS－90% ミュイン・同一技耐性なし", "thunder": 70}]
+[
+  {
+    "id": 1,
+    "geo": 50,
+    "ice": 8,
+    "aero": 10,
+    "dark": 5,
+    "eint": 363,
+    "fire": 10,
+    "name": "Dhartok",
+    "earth": 11,
+    "light": 10,
+    "water": 16,
+    "barrier": 100,
+    "remarks": "ソーティEボス\r\nWAR/BLM\r\n\r\nLv145 HP約156万\r\nINT363 MND338\r\n斬突打魔息＋0% 風－50%\r\n土85% 火風雷光70% 氷50% 闇5% 水吸収\r\n魔防100 回避1581\r\n累積履行・累積WS－90%\r\nミュイン・同一技耐性なし",
+    "thunder": 10
+  },
+  {
+    "id": 2,
+    "geo": 50,
+    "ice": 10,
+    "aero": 5,
+    "dark": 5,
+    "eint": 350,
+    "fire": 5,
+    "name": "Gartell",
+    "earth": 10,
+    "light": 5,
+    "water": 5,
+    "barrier": 100,
+    "remarks": "ソーティFボス\r\nMNK/BLM\r\n\r\nLv145 HP約160万\r\nINT350 MND394\r\n斬突打魔息＋0% 風－50%\r\n火氷風土雷水光闇5%\r\n風モード時 氷70% 風吸収\r\n雷モード時 土70% 雷吸収\r\n魔防100 回避1613",
+    "thunder": 5
+  },
+  {
+    "id": 3,
+    "geo": 50,
+    "ice": 30,
+    "aero": 8,
+    "dark": 16,
+    "eint": 504,
+    "fire": 9,
+    "name": "Triboulex",
+    "earth": 7,
+    "light": 2,
+    "water": 8,
+    "barrier": 100,
+    "remarks": "ソーティGボス\r\nLv145 HP約150万\r\nINT504/MND367\r\n斬突打魔息＋0% 風－50%\r\n光70% 火雷60% 風水50% 土40% 氷30% 闇吸収\r\n魔防100 回避1581\r\n累積履行・累積WS－90%\r\nミュイン耐性：なし\r\n同一ウェポンスキル耐性：",
+    "thunder": 9
+  },
+  {
+    "id": 4,
+    "geo": 50,
+    "ice": 10,
+    "aero": 10,
+    "dark": 10,
+    "eint": 494,
+    "fire": 10,
+    "name": "Aita",
+    "earth": 10,
+    "light": 10,
+    "water": 10,
+    "barrier": 122,
+    "remarks": "ソーティHボス\r\nRUN/DRK\r\n\r\nLv145 HP約160万\r\nINT494 MND427\r\n斬突打魔息＋0% 風－50%\r\n火氷風土雷水光闇5%\r\n弱点属性70%\r\n魔防122 回避1613\r\n累積履行WS－90% ミュイン・同一技耐性なし",
+    "thunder": 10
+  }
+]

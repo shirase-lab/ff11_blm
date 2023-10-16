@@ -8,7 +8,7 @@ $(document).ready(function () {
   /* 初期値設定 */
   var currentEquipPart = null;
   initialize();
-  var resist ;
+  var resist = null;
 
   function initialize() {
     $("#magics").val(1);              // 魔法初期値
@@ -50,6 +50,10 @@ $(document).ready(function () {
 
   function cb()
   {
+    if (resist == null) {
+      setTimeout(cb, 1000);
+      return;
+    }
     player.buff();
     enemy.debuff();
     magic.magic_burst_info(player.get(), enemy.get(), resist);

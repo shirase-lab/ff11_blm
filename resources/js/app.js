@@ -16,6 +16,7 @@ $(document).ready(function () {
       resist = data;
       enemy.initialize(cb, resist);
       magic.magic_burst_info(player.get(), enemy.get(), resist);
+      setEnemy(1, enemy.set);
     });
     magic.initialize(cb);
     setMagic(1, magic.set)
@@ -44,7 +45,6 @@ $(document).ready(function () {
     $("#roll").val(7);                // ロール＋
     check($("#job_bonus"));           // ロールジョブボーナス
     $("#wizardz").val(12);            // ウィザーズロール
-    setEnemy(1, enemy.set);
     player.initialize(cb);
   }
 

@@ -530,5 +530,19 @@
     "type_id": 11,
     "image_url": "https://www.bg-wiki.com/images/3/39/Opashoro_%28Level_119_II%29_icon.png",
     "yougo_url": "https://wiki.ffo.jp/html/38965.html"
+  },
+  {
+    "ex": 1,
+    "id": 38,
+    "jobs": "白黒赤吟召学風",
+    "name": "水影の首飾り",
+    "rare": 1,
+    "level": 99,
+    "status": "INT+4 MND+4 魔攻+8\r\nマジックバーストダメージ+10\r\nレジストチャーム+5",
+    "part_id": 6,
+    "quality": 0,
+    "type_id": 28,
+    "image_url": "https://www.bg-wiki.com/images/a/ac/Mizu._Kubikazari_icon.png",
+    "yougo_url": "https://wiki.ffo.jp/html/31253.html"
   }
 ]
